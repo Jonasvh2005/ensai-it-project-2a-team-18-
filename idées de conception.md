@@ -13,3 +13,9 @@ colonnes: gare de départ, date de départ, gare d'arrivée, date d'arrivée, nb
 # 4ème BDD
 BDD d'adjacence des gares
 colonnes: gare 1, gare 2, type de voie
+# 5ème BDD
+BDD des types d'abonnement
+colonnes: réduction, conditions
+# 6ème BDD
+BDD des tickets
+colonnes: utilisateur, trajet
