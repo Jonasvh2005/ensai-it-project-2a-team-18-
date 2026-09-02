@@ -2,7 +2,7 @@
 3 bases de données
 # 1ère BDD
 BDD des comptes utilisateur
-colonnes: nom de compte, mot de passe, email, niveau d'habilitation, abonnement
+colonnes: numéro de compte(id), nom de compte , mot de passe, email, niveau d'habilitation, abonnement
 # 2ème BDD
 BDD des gares
 colonnes: nom de gare, lieu, nb de voies, type de gare?
@@ -18,4 +18,4 @@ BDD des types d'abonnement
 colonnes: réduction, conditions
 # 6ème BDD
 BDD des tickets
-colonnes: utilisateur, trajet
+colonnes: utilisateur, trajet, statut(confirmé ou annulé)
