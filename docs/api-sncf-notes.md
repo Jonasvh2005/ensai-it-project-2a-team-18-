@@ -1,4 +1,4 @@
-# Notes — API SNCF (Navitia)
+﻿# Notes — API SNCF (Navitia)
 
 Synthèse de la doc officielle (doc.navitia.io) pour préparer le développement
 de `SNCFClientService`, en attendant la réception du token personnel.
