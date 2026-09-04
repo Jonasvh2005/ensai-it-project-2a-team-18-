@@ -22,7 +22,7 @@ def mdp_valide(mdp) -> str:
         elif i in ["-", "_", "#", ".", "$", "@", ",", "(", ")", "[", "]"]:
             carac = True
         else:
-            return f"charactere {i} non valide"
+            return f"charactere '{i}' non valide"
     if not maj:
         return "le mdp doit contenir une majuscule"
     elif not min:
@@ -44,8 +44,6 @@ def email_valide(email) -> str:
     -Une chaine de charactères
     """
     arobase_split = email.split("@")
-    for i in arobase_split:
-        split_total = i.split(".")
 
     if len(arobase_split) != 2:
         return "Un email doit contenir un unique @"
@@ -56,7 +54,7 @@ def email_valide(email) -> str:
     if email[-1] == ".":
         return "Un email ne se termine pas par ."
 
-    if len(split_total[1][0]) == 0:
+    if len(arobase_split[1][0]) == ".":
         return "Pas de . immediatement apres le @"
 
     return "Email valide"

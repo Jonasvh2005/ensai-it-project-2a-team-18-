@@ -8,7 +8,7 @@ class Utilisateur:
         mdp: str: mot de passe du compte
         email: str: email associé au compte
         role: CLIENT, COLLABORATEUR ou ADMIN: niveau d'accès du compte
-        abbonement: str: abonnement pris (ou None si pas d'abonnement)
+        abbonement: int: abonnement pris (ou None si pas d'abonnement)
     """
     def __init__(self, id, nom, mdp, email):
         self.__id = None
