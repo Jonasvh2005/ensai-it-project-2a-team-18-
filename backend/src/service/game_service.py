@@ -32,7 +32,7 @@ class GameService:
             raise HTTPException(status_code=404, detail="Player not found")
 
         type_game = GameMode.get(game_mode)
-        game = type_game.play(p1, p2)
+        game = type_game.play(p1, p2, **kwargs)
 
         ScoringStrategy.update_player_ratings(game)
 
