@@ -15,8 +15,8 @@ class GameModeFactory:
             ValueError: If the requested game_mode is not supported.
         """
         if game_mode == 'coinflip':
-            return CoinFlipMode
+            return CoinFlipMode()
         elif game_mode == 'dice':
-            return DiceMode
+            return DiceMode()
         else:
             raise ValueError("Game Mode not correct")
