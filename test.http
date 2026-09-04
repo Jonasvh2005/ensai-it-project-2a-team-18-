@@ -1,0 +1,11 @@
+GET https://api.navitia.io/v1/coverage/sncf/stop_areas
+Authorization: 6312e847-12aa-4179-b558-c7a2a54cdc01
+
+GET https://api.navitia.io/v1/coverage/sncf/routes
+Authorization: 6312e847-12aa-4179-b558-c7a2a54cdc01
+
+GET https://api.navitia.io/v1/coverage/sncf/journeys?from=2.3205;48.8412&to=-1.6726;48.1035&datetime=20260904T123146
+Authorization: 6312e847-12aa-4179-b558-c7a2a54cdc01
+
+GET https://api.navitia.io/v1/coverage/sncf/places?q=Lyon&type%5B%5D=stop_area
+Authorization: 6312e847-12aa-4179-b558-c7a2a54cdc01
