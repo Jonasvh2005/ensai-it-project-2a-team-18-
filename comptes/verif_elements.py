@@ -18,11 +18,11 @@ def mdp_valide(mdp) -> str:
         elif uni >= 65 and uni <= 90:
             maj = True
         elif uni >= 97 and uni <= 122:
-            maj = True
-        elif uni in [45, 95, 35, 46, 36, 64, 44, 40, 41, 91, 93]:
+            min = True
+        elif i in ["-", "_", "#", ".", "$", "@", ",", "(", ")", "[", "]"]:
             carac = True
         else:
-            return f"charactère {i} non valide"
+            return f"charactere {i} non valide"
     if not maj:
         return "le mdp doit contenir une majuscule"
     elif not min:
@@ -33,3 +33,30 @@ def mdp_valide(mdp) -> str:
         return "le mdp doit contenir un charactère spécial"
     else:
         return "mdp valide"
+
+
+def email_valide(email) -> str:
+    """
+    fonction qui vérifie que le mot de passe soit valide.
+    Un email valide est de la forme: XXXX@XXXX.XXXX
+    -Une chaine de charactères avant un @
+    -Une chaine de charactères (pouvant contenir '.') entre le dernier '.' et le '@'
+    -Une chaine de charactères
+    """
+    arobase_split = email.split("@")
+    for i in arobase_split:
+        split_total = i.split(".")
+
+    if len(arobase_split) != 2:
+        return "Un email doit contenir un unique @"
+
+    if email[0] == "@":
+        return "Un email ne commence pas par @"
+
+    if email[-1] == ".":
+        return "Un email ne se termine pas par ."
+
+    if len(split_total[1][0]) == 0:
+        return "Pas de . immediatement apres le @"
+
+    return "Email valide"
