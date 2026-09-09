@@ -39,9 +39,9 @@ def email_valide(email) -> str:
     """
     fonction qui vérifie que le mot de passe soit valide.
     Un email valide est de la forme: XXXX@XXXX.XXXX
-    -Une chaine de charactères avant un @
-    -Une chaine de charactères (pouvant contenir '.') entre le dernier '.' et le '@'
-    -Une chaine de charactères
+    -Une chaine de charactères avant un unique @
+    -Une chaine de charactères entre le '@' et le '.'
+    -Une chaine de charactères après le dernier '.'
     """
     arobase_split = email.split("@")
 
