@@ -19,7 +19,7 @@ CREATE TABLE users (
 -- 3. Table des Gares Référencées
 CREATE TABLE stations (
     id SERIAL PRIMARY KEY,
-    sncf_uic_code VARCHAR(50) UNIQUE NOT NULL, -- ID Réseau API SNCF
+    codeGareSNCF VARCHAR(50) UNIQUE NOT NULL, -- ID Réseau API SNCF
     name VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL
 );
@@ -62,5 +62,5 @@ CREATE TABLE tickets (
     trip_id INT REFERENCES trips(id),
     travel_class VARCHAR(20) CHECK (travel_class IN ('CLASSIQUE', 'PREMIUM')),
     final_price NUMERIC(8,2) NOT NULL,
-    status VARCHAR(20) DEFAULT 'CONFIRME' CHECK (status IN ('CONFIRME', 'ANNULE'))
+    status VARCHAR(20) DEFAULT 'EN ATTENTE' CHECK (status IN ('PAYE', 'ANNULE', 'EN ATTENTE'))
 );

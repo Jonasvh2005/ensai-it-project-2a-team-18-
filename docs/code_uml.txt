@@ -1,5 +1,5 @@
-# Code pour diagrammes UML
-## Cas d'utilisation
+*** CODE POUR DIAGRAMMES UML ***
+** CAS D'UTILISATION **
 
 @startuml
 left to right direction
@@ -59,7 +59,7 @@ UC_SNCF_Sync <--> SNCF
 @enduml
 
 
-## Classes
+** CLASSES **
 
 @startuml
 
@@ -145,7 +145,7 @@ StationAdjacency "0..*" -- "2" Station : connecte >
 
 @enduml
 
-## Structure
+** STRUCTURE **
 
 @startuml
 skinparam componentStyle uml2
@@ -235,5 +235,68 @@ D_Line --> BDD
 D_Station --> BDD
 D_Trip --> BDD
 D_Book --> BDD
+
+@enduml
+
+** SEQUENCE **
+
+@startuml
+autonumber
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+
+actor "Client / Collab" as Client
+participant "TripController" as Ctrl
+participant "TripService" as Service
+participant "SNCFClientService" as SNCFService
+participant "API SNCF Externe" as API_SNCF
+participant "StationRepository" as StationDAO
+participant "TripRepository" as TripDAO
+database "PostgreSQL" as BDD
+
+Client -> Ctrl : GET /api/trips?dep=Rennes&arr=Paris
+activate Ctrl
+
+  Ctrl -> Service : searchTrips("Rennes", "Paris")
+  activate Service
+
+    ' 1. Vérification / Récupération des gares en BDD
+    Service -> StationDAO : findByName("Rennes"), findByName("Paris")
+    activate StationDAO
+    StationDAO -> BDD : SELECT * FROM stations WHERE name IN (...)
+    activate BDD
+    BDD --> StationDAO : Données gares (codes UIC)
+    deactivate BDD
+    StationDAO --> Service : Objets Station (Rennes, Paris)
+    deactivate StationDAO
+
+    ' 2. Appel à l'API SNCF pour le calcul du temps de trajet
+    Service -> SNCFService : getJourneyDuration(uicDep, uicArr)
+    activate SNCFService
+      SNCFService -> API_SNCF : GET /journeys (UIC départ, UIC arrivée)
+      activate API_SNCF
+      API_SNCF --> SNCFService : 200 OK (Durée calculée : 45 min)
+      deactivate API_SNCF
+    SNCFService --> Service : 45 minutes
+    deactivate SNCFService
+
+    ' 3. Recherche des trajets planifiés correspondants
+    Service -> TripDAO : findAvailableTrips(depId, arrId)
+    activate TripDAO
+      TripDAO -> BDD : SELECT * FROM trips WHERE line_id = ...
+      activate BDD
+      BDD --> TripDAO : Liste des trajets bruts
+      deactivate BDD
+    TripDAO --> Service : Liste d'objets Trip
+    deactivate TripDAO
+
+    ' 4. Application de la logique métier
+    Service -> Service : Enrichir trajets avec durée SNCF\net décomposition tarifaire (Infra/Énergie)
+
+  Service --> Ctrl : Liste des trajets enrichis (DTO)
+  deactivate Service
+
+Ctrl --> Client : 200 OK (JSON avec trajets, prix décomposé, durée)
+deactivate Ctrl
 
 @enduml
