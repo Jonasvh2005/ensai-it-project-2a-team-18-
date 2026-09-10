@@ -1,0 +1,183 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+
+\geometry{margin=2.5cm}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black,
+}
+
+% ------------------------------------------------------------
+% PAGE DE GARDE
+% ------------------------------------------------------------
+\begin{document}
+
+\begin{titlepage}
+    \centering
+
+   
+    \includegraphics[width=5cm]{"C:/Users/ouatt/Desktop/logos/ensai_logo.png"}
+
+    \vspace{0.5cm}
+    {\Large \textsc{École nationale de la statistique}}\\
+    {\Large \textsc{et de l'analyse de l'information}}
+
+    \vspace{2cm}
+    {\LARGE \textsc{Projet informatique}}\\[0.3cm]
+    {\large Groupe 18}
+
+    \vspace{1cm}
+    {\LARGE \textsc{Rapport d'analyse et de conception}}
+
+    \vspace{1.5cm}
+    \rule{\linewidth}{0.5pt}
+
+    \vspace{0.5cm}
+  
+    {\Huge \textbf{Concurrent SNCF}}
+
+    \vspace{0.3cm}
+    {\Large Une plateforme de vente de trajets ferroviaires concurrente de la SNCF}
+
+    \vspace{0.5cm}
+    \rule{\linewidth}{0.5pt}
+
+    \vspace{2cm}
+    \begin{flushleft}
+        \textit{Étudiants :}\\
+        YVANO Maxime\\
+        VAN HECKE Jonas\\
+        SIDOBRE Noé\\
+        OUATTARA Youssouf Adam\\
+        ARRAJI Salma
+    \end{flushleft}
+
+    \vfill
+
+    \begin{flushright}
+        \textit{Tuteur :}\\
+        Kévin LEROY
+    \end{flushright}
+
+    \vspace{0.5cm}
+    {Année 2026-2027}
+
+\end{titlepage}
+
+----------------------------------------------------------
+
+\section*{Préambule}
+
+Dans ce rapport, nous allons vous présenter \textbf{Concurrent SNCF}, notre
+application de vente de trajets ferroviaires réalisée dans le cadre de notre
+projet informatique en deuxième année. Celle-ci se base sur les données
+fournies par l'API SNCF (Navitia) et a pour objectif de mettre en pratique
+les principes de programmation et de modélisation acquis au cours de notre
+scolarité.
+
+\vspace{0.5cm}
+
+\noindent\textbf{Contexte.} Nous sommes développeurs pour une toute nouvelle
+société de transport ferroviaire qui exploite le réseau SNCF. Notre mission
+est de mettre en place une solution permettant au service commercial de
+notre entreprise de proposer des trajets en train à ses clients.
+
+\vspace{0.3cm}
+
+\noindent\textbf{Objectif.} Développer une API permettant, selon le niveau
+d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
+\begin{itemize}
+    \item la gestion des comptes utilisateurs et de leurs rôles ;
+    \item la création et la gestion de lignes d'exploitation entre gares,
+          existantes et récupérées via l'API SNCF ;
+    \item la planification de trajets sur ces lignes, avec calcul
+          automatique du temps de trajet via l'API SNCF ;
+    \item la recherche de trajets par un client, avec aide à la saisie des
+          gares par autocomplétion ;
+    \item une fonctionnalité de différenciation commerciale par rapport au
+          réseau SNCF existant.
+\end{itemize}
+
+\vspace{0.3cm}
+
+\noindent Le détail de sa conception figure dans la suite de ce document.
+
+\tableofcontents
+
+% ------------------------------------------------------------
+% CHAPITRE 1 : ORGANISATION
+% ------------------------------------------------------------
+\chapter{Organisation}
+
+\section{Cahier des charges}
+
+\subsection*{Présentation d'ensemble du projet Concurrent SNCF}
+
+
+
+\subsection*{Utilisateurs de l'application}
+
+Trois niveaux d'habilitation sont distingués dans l'accès aux fonctionnalités
+de l'application : \textbf{CLIENT}, \textbf{COLLABORATEUR} et
+\textbf{ADMIN}.
+
+
+
+\subsection*{Fonctionnalités de base}
+
+
+\begin{itemize}
+    \item F1 --- Gestion des comptes utilisateur
+    \item F2 --- Gestion des lignes d'exploitation
+    \item F3 --- Gestion des trajets proposés
+    \item F4 --- Recherche d'un trajet
+    \item F5 --- Positionnement commercial (fonctionnalité différenciante)
+\end{itemize}
+
+\subsection*{Fonctionnalités optionnelles}
+
+\begin{itemize}
+    \item FO1 --- Réservation de trajet
+    \item FO2 --- Classes de voyage
+\end{itemize}
+
+\subsection*{Outils de développement}
+
+
+
+\section{Étapes de réalisation}
+
+
+
+% ------------------------------------------------------------
+% CHAPITRE 2 : MODÉLISATION UML
+% ------------------------------------------------------------
+\chapter{Modélisation UML}
+
+\section{Diagramme de cas d'utilisation}
+
+
+
+\section{Diagramme de base de données}
+
+
+\section{Diagramme d'architecture}
+
+
+
+\section{Diagramme de séquence}
+
+
+
+\end{document}
