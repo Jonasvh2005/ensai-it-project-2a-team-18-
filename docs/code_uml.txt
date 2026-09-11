@@ -9,18 +9,17 @@ actor "Utilisateur" as U
 actor "Admin" as A
 actor "Collaborateur" as Collab
 actor "Client" as C
-actor "API SNCF" as SNCF
 
 ' Héritage des acteurs selon ton schéma
 U <|-- C
 U <|-- Collab
 U <|-- A
 
-rectangle "Système Backend Transport Ferroviaire" {
+rectangle "Backend" {
 
-  usecase "S'inscrire / Se connecter" as UC_Auth
+  usecase "S'inscrire" as UC_Inscrip
+  usecase "Se connecter" as UC_Connect
   usecase "Affecter un rôle" as UC_AssignRole
-  usecase "Gérer les rôles (hors Admin)" as UC_ManageRoles
   
   usecase "Rechercher des trajets (Autocomplétion)" as UC_Search
   usecase "Voir détail tarif / Réduction abonnement" as UC_Tariff
@@ -33,28 +32,24 @@ rectangle "Système Backend Transport Ferroviaire" {
 }
 
 ' Relations
-U --> UC_Auth
+U --> UC_Inscrip
 
+A --> UC_Connect
 A --> UC_AssignRole
-A --> UC_ManageRoles
 
+C --> UC_Connect
 C --> UC_Search
 C --> UC_Tariff
-C --> UC_Book
 
+Collab --> UC_Connect
 Collab --> UC_ManageLines
 Collab --> UC_ManageTrips
 
-UC_Auth --> A
-UC_Auth --> Collab
-UC_Auth --> C
-
+UC_Search --> UC_Book
 ' Inclusions avec l'API SNCF
 UC_ManageLines .> UC_SNCF_Sync : <<include>>
-UC_ManageTrips .> UC_SNCF_Sync : <<include>>
-UC_Search .> UC_SNCF_Sync : <<include>>
-
-UC_SNCF_Sync <--> SNCF
+UC_ManageTrips .> "<<include>>"UC_SNCF_Sync 
+UC_Search .> "<<include>>"UC_SNCF_Sync
 
 @enduml
 
