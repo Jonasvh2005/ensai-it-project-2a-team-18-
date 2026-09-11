@@ -167,7 +167,8 @@ de l'application : \textbf{CLIENT}, \textbf{COLLABORATEUR} et
 
 \section{Diagramme de cas d'utilisation}
 
-
+Ce diagramme de cas d'utilisation délimite la zone fonctionnelle du backend et structure les interactions selon le profil de l'utilisateur et avec l'API externe de la SNCF.
+Les utilisateurs de l'application ont trois rôles, d'où le mécanisme d'héritage mis en place. Un "Utilisateur" se connecte ou créée son compte ce qui le renvoie vers son rôle, parmi les "Admins", les "Collaborateurs" et les "Clients", et ses possibilités dédiées. Le "Client" dispose des fonctionnalités de recherche, de consultation des tarifs et de réservation. Le "Collaborateur" s'occupe du réseau et de la planification des trajets. Et l'"Admin" supervise la gestion globale des rôles. Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, il faut récupérer toutes les informations de l'API SNCF.
 
 \section{Diagramme de base de données}
 
