@@ -10,22 +10,26 @@ def mdp_valide(mdp) -> str:
     """
     if len(mdp) < 10:
         return "mot de passe trop court"
-    (maj, min, chiffre, carac) = (False, False, False, False)
+    (maj, minu, chiffre, carac) = (False, False, False, False)
     for i in mdp:
         uni = ord(i)
         if uni >= 48 and uni <= 57:
+            # cela corespond aux chiffres arabes
             chiffre = True
         elif uni >= 65 and uni <= 90:
+            # cela corespond aux lettres majuscules de l'alphabet latin moderne
             maj = True
         elif uni >= 97 and uni <= 122:
-            min = True
+            # cela corespond aux lettres minuscules de l'alphabet latin moderne
+            minu = True
         elif i in ["-", "_", "#", ".", "$", "@", ",", "(", ")", "[", "]"]:
+            # cela correspnd à une sélection de charactères spéciaux
             carac = True
         else:
             return f"charactere '{i}' non valide"
     if not maj:
         return "le mdp doit contenir une majuscule"
-    elif not min:
+    elif not minu:
         return "le mdp doit contenir une minuscule"
     elif not chiffre:
         return "le mdp doit contenir un chiffre"
@@ -44,17 +48,21 @@ def email_valide(email) -> str:
     -Une chaine de charactères après le dernier '.'
     """
     arobase_split = email.split("@")
+    particule = arobase_split[1].split(".")
 
     if len(arobase_split) != 2:
-        return "Un email doit contenir un unique @"
+        return "Un email doit contenir un unique '@'"
 
     if email[0] == "@":
-        return "Un email ne commence pas par @"
+        return "Un email ne commence pas par '@'"
+
+    if len(particule) < 2:
+        return "Un email doit contenir un point apres le '@'"
 
     if email[-1] == ".":
-        return "Un email ne se termine pas par ."
+        return "Un email ne se termine pas par '.'"
 
-    if len(arobase_split[1][0]) == ".":
-        return "Pas de . immediatement apres le @"
+    if arobase_split[1][0] == ".":
+        return "Pas de '.' immediatement apres le '@'"
 
     return "Email valide"

@@ -25,7 +25,7 @@ CREATE TABLE stations (
 );
 
 -- 4. Table d'Adjacence des Gares & Rails
-CREATE TABLE station_adjacencies (
+CREATE TABLE station_adjacences (
     id SERIAL PRIMARY KEY,
     station_a_id INT REFERENCES stations(id),
     station_b_id INT REFERENCES stations(id),
