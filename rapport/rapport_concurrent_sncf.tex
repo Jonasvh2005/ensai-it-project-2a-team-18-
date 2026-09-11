@@ -195,6 +195,14 @@ La \textbf{couche DAO/Repository} est la seule à dialoguer directement avec la 
 
 \section{Diagramme de séquence}
 
+Ce diagramme représente le fonctionnement interne du traitement d'une requête envoyée par l'utilisateur.
 
+L'utilisateur cherche à faire un trajet entre deux gares.
+La requête est d'abord envoyée vers le Business Layer afin de fournir une sélection parmi les meilleurs trajets.
+Le Business Layer commence par demander les informations de gares stockées en backend.
+Une fois ces dernières reçues, une demmande est faite à l'API SNCF afin d'obtenir la durée d'un trajet entre ces deux gares.
+Parallèlement, une demande sur les mêmes trajets fournies par notre entreprise est faite en backend.
+Il y a enfin comparaison entre les trajets fournis par l'API de SNCF et ceux que nous fournissons afin de comparer et de trouver une liste de trajets optimaux.
+La réduction liée à l'abonnement qu'à souscrit l'utilisateur est enfin appliquée et les résultats optimaux sont envoyés à l'utilisateur
 
 \end{document}
