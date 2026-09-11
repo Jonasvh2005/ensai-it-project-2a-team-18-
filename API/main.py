@@ -1,7 +1,7 @@
+import base
+import sncf
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import sncf
-import base
 
 app = FastAPI(title="API Trains", root_path="/proxy/5000")
 base.creer_tables()

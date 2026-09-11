@@ -1,6 +1,6 @@
 import pytest
 
-from .verif_elements import (email_valide, mdp_valide)
+from .verif_elements import email_valide, mdp_valide
 
 
 @pytest.mark.parametrize(

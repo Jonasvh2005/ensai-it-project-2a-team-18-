@@ -36,10 +36,10 @@ class Utilisateur:
 
     def abonnement(self):
         return self.__abonnement
-    
+
     def changer_nom(self, nom):
         self.__nom = nom
-    
+
     def changer_mdp(self, mdp):
         self.__mdp = mdp
 
