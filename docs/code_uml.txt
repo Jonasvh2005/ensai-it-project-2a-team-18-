@@ -249,7 +249,7 @@ participant "StationRepository" as StationDAO
 participant "TripRepository" as TripDAO
 database "PostgreSQL" as BDD
 
-Client -> Ctrl : GET /api/trips?dep=Rennes&arr=Paris
+Client -> Ctrl : GET /api/trips?dep=Rennes&arr=Paris&datetime=20260911T160525
 activate Ctrl
 
   Ctrl -> Service : searchTrips("Rennes", "Paris")
