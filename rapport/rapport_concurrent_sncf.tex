@@ -167,8 +167,23 @@ de l'application : \textbf{CLIENT}, \textbf{COLLABORATEUR} et
 
 \section{Diagramme de cas d'utilisation}
 
-Ce diagramme de cas d'utilisation délimite la zone fonctionnelle du backend et structure les interactions selon le profil de l'utilisateur et avec l'API externe de la SNCF.
-Les utilisateurs de l'application ont trois rôles, d'où le mécanisme d'héritage mis en place. Un "Utilisateur" se connecte ou créée son compte ce qui le renvoie vers son rôle, parmi les "Admins", les "Collaborateurs" et les "Clients", et ses possibilités dédiées. Le "Client" dispose des fonctionnalités de recherche, de consultation des tarifs et de réservation. Le "Collaborateur" s'occupe du réseau et de la planification des trajets. Et l'"Admin" supervise la gestion globale des rôles. Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, il faut récupérer toutes les informations de l'API SNCF.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{doc/Diagramme cas d'utilisation.png}
+    \caption{Légende de l'image}
+\end{figure}
+
+Ce diagramme de cas d'utilisation délimite la zone fonctionnelle du backend et structure les interactions selon le profil de l'utilisateur et avec l'API externe de la \textit{SNCF}.
+
+Les utilisateurs de l'application ont trois rôles, d'où le mécanisme d'héritage mis en place. Un \textbf{Utilisateur} créée son compte, puis il se connecte avec son rôle, parmi les \textbf{Admins}, les \textbf{Collaborateurs} et les \textbf{Clients}, et cela lui donne accès à ses possibilités dédiées.
+
+\begin{itemize}
+    \item Le \textbf{Client} dispose des fonctionnalités de recherche, de consultation des tarifs et de réservation. 
+    \item Le \textbf{Collaborateur} s'occupe du réseau et de la planification des trajets. 
+    \item L'\textbf{Admin} supervise la gestion globale des rôles. 
+\end{itemize}
+
+Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, il faut récupérer toutes les informations des gares, des horaires des trajets, etc. à partir de \textbf{l'API \textit{SNCF}}.
 
 \section{Diagramme de base de données}
 
