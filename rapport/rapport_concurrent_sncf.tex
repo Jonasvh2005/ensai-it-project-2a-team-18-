@@ -5,6 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{graphicx}
+\usepackage{pdflscape}
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
@@ -229,9 +230,15 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
 
 \section{Diagramme de classes}
 
+\begin{landscape}
+
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{../doc/Diagramme classes.png}
+    \includegraphics[
+        width=0.95\linewidth,
+        height=0.90\textheight,
+        keepaspectratio
+    ]{../doc/Diagramme classes.png}
     \caption{Légende de l'image}
 \end{figure}
 
