@@ -5,11 +5,12 @@
 \usepackage[T1]{fontenc}
 \usepackage[french]{babel}
 \usepackage{graphicx}
+\usepackage{pdflscape}
 \usepackage{geometry}
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
-
+\usepackage{microtype}
 \addto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
 
 \geometry{margin=2.5cm}
@@ -126,7 +127,7 @@ d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
 
 \subsection*{Présentation d'ensemble du projet Concurrent SNCF}
 
-Dans le cadre de notre projet informatique de deuxième année, il nous a été demandé de concevoir une solution logicielle destinée à une société de
+Dans le cadre de notre projet d'informatique de deuxième année, il nous a été demandé de concevoir une solution logicielle destinée à une société de
 transport ferroviaire nouvellement créée dénommée \textbf{Concurrent SNCF}, exploitant le réseau SNCF. Celle-ci s'adresse à plusieurs utilisateur dont les \textbf{clients} souhaitant rechercher et réserver
 des trajets en train, les \textbf{collaborateurs} de
 l'entreprise chargés de définir l'offre commerciale : quelles liaisons sont
@@ -155,7 +156,6 @@ lignes, ainsi que les réservations effectuées par les clients.
 Trois différents niveaux d’habilitation sont distingués dans l’accès aux fonctionnalités de l’API de Concurrent SNCF : les clients, les collaborateurs et les administrateurs. Chaque utilisateur dispose d’un compte applicatif créé à partir d’un nom d’utilisateur et d’un mot de passe. Les clients peuvent notamment rechercher les trajets proposés et, dans le cadre de la fonctionnalité de réservation, réserver, consulter et annuler leurs trajets. Les collaborateurs sont chargés de la gestion de l’offre ferroviaire : ils peuvent créer, modifier et supprimer les lignes d’exploitation ainsi que planifier les trajets associés. Enfin, les administrateurs assurent la gestion des habilitations des utilisateurs en pouvant augmenter ou diminuer leur niveau d’accès. Ils ne peuvent toutefois pas modifier le niveau d’habilitation des autres administrateurs. Cette organisation permet ainsi de contrôler l’accès aux différentes fonctionnalités de l’application selon le rôle de chaque utilisateur et de sécuriser la gestion des données.
 
 
-\clearpage
 \subsection*{Outils de développement}
 
 L’application sera développée en Python. La gestion et le stockage des données seront assurés par PostgreSQL. Enfin, afin de faciliter la coordination et le travail collaboratif entre les membres de l’équipe, nous utiliserons Github pour centraliser le code et suivre les différentes modifications apportées au projet.
@@ -173,10 +173,16 @@ Afin d'organiser les différentes phases du projet, nous avons établi
 un planning prévisionnel permettant de répartir les principales étapes
 d'analyse, de conception et de développement sur la durée du projet.
 
+La première partie du projet est dédiée à l'analyse de notre sujet et la 
+réalisation de diagrammes afin d'orienter le développement de notre application.
+La deuxième se concentre sur le développement de l'application et l'écriture du 
+rapport final. Puis la dernière partie sera dédiée à la préparation pour la
+soutenance.
+
 \begin{figure}[htbp]
     \centering
     \includegraphics[
-        width=0.95\textwidth,
+        width=\textwidth,
         keepaspectratio
     ]{../doc/Diagramme_Gantt.png}
     \caption{Diagramme de Gantt : Phase de conception et de développement}
@@ -212,7 +218,11 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{../doc/Diagramme classes.png}
+    \includegraphics[
+        width=0.95\linewidth,
+        height=0.90\textheight,
+        keepaspectratio
+    ]{../doc/Diagramme classes.png}
     \caption{Légende de l'image}
 \end{figure}
 
@@ -224,14 +234,28 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
     \caption{Légende de l'image}
 \end{figure}
 
-Ce diagramme structure projet dispose de 4 couches, chacune étant relative à une tâche bien précise.
+Ce diagramme de structure du projet dispose de 4 couches, chacune étant
+relative à une tâche bien précise.
 
-Le \textbf{Frontend} (Webmasters) envoie des requêtes dans le format HTTP/REST à la \textbf{couche Controller}, qui regroupe les points d'entrée de l'API : \texttt{AuthController} (F1),\texttt{LineController} (F2), \texttt{TripController} (F3) et \texttt{BookingController} (FO1), celle ci transmet le traitement à la couche sous-jacente. 
+Le \textbf{Frontend (Webmasters)} envoie des requêtes au format HTTP/REST à
+la couche \textbf{Controller}, qui regroupe les points d'entrée de l'API :
+\texttt{AuthController} (F1), \texttt{LineController} (F2),
+\texttt{TripController} (F3) et \texttt{BookingController} (FO1) ; celle-ci
+transmet ensuite le traitement à la couche sous-jacente.
 
-La \textbf{couche Service} fonctionne dans une logique dans laquelle chaque service correspond à un domaine fonctionnel (comptes, lignes, trajets, réservations) et se base sur la couche Repository pour avoir accès aux données. \texttt{LineService} et \texttt{TripService} font également appel à \texttt{SNCFClientService}, point d'entrée unique et centralisé vers l'API SNCF externe, afin d'éviter que plusieurs services n'implémentent chacun leurs propres appels HTTP vers l'API SNCF.
+La couche \textbf{Service} fonctionne selon une logique dans laquelle chaque
+service correspond à un domaine fonctionnel (comptes, lignes, trajets,
+réservations) et s'appuie sur la couche Repository pour avoir accès aux
+données. \texttt{LineService} et \texttt{TripService} font également appel à
+\texttt{SNCFClientService}, point d'entrée unique et centralisé vers l'API
+SNCF externe, afin d'éviter que plusieurs services n'implémentent chacun
+leurs propres appels HTTP vers l'API SNCF.
 
-La \textbf{couche DAO/Repository} est la seule à dialoguer directement avec la base de données PostgreSQL. Chaque repository (\texttt{UserRepository}, \texttt{LineRepository}, \texttt{StationRepository}, \texttt{TripRepository}, \texttt{BookingRepository}) est responsable d'une seule entité.
-
+La couche \textbf{DAO/Repository} est la seule à dialoguer directement avec
+la base de données PostgreSQL. Chaque repository
+(\texttt{UserRepository}, \texttt{LineRepository}, \texttt{StationRepository},
+\texttt{TripRepository}, \texttt{BookingRepository}) est responsable d'une
+seule entité.
 \section{Diagramme de séquence}
 
 \begin{figure}[htbp]
