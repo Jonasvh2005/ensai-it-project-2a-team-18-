@@ -10,6 +10,8 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 
+\addto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+
 \geometry{margin=2.5cm}
 
 \hypersetup{
@@ -28,7 +30,7 @@
     \centering
 
    
-    \includegraphics[width=5cm]{"C:/Users/ouatt/Desktop/logos/ensai_logo.png"}
+    \includegraphics[width=5cm]{"../doc/ensai_logo_1.png"}
 
     \vspace{0.5cm}
     {\Large \textsc{École nationale de la statistique}}\\
@@ -71,7 +73,6 @@
         Kévin LEROY
     \end{flushright}
 
-    \vspace{0.5cm}
     {Année 2026-2027}
 
 \end{titlepage}
@@ -122,15 +123,33 @@ d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
 
 \subsection*{Présentation d'ensemble du projet Concurrent SNCF}
 
+Dans le cadre de notre projet informatique de deuxième année, il nous a été demandé de concevoir une solution logicielle destinée à une société de
+transport ferroviaire nouvellement créée dénommée \textbf{Concurrent SNCF}, exploitant le réseau SNCF. Celle-ci s'adresse à plusieurs utilisateur dont les \textbf{clients} souhaitant rechercher et réserver
+des trajets en train, les \textbf{collaborateurs} de
+l'entreprise chargés de définir l'offre commerciale : quelles liaisons sont
+exploitées, à quels horaires, à quel tarif et avec quelle capacité.
+
+Le développement de l'interface utilisateur étant pris en charge par les
+webmasters de l'entreprise, notre périmètre porte exclusivement sur la
+réalisation d'une \textbf{API}. Celle-ci expose l'ensemble des
+fonctionnalités de l'application sous forme de points d'entrée REST,
+documentés et interrogeables indépendamment de toute interface graphique.
+
+Deux sources de données complémentaires seront notamment utilisées pour constituer l'application. D'une
+part, l'\textbf{API SNCF} (Navitia), qui fournit le référentiel des gares
+existantes ainsi que le calcul des temps de trajet réels entre deux gares ;
+ces données ne sont ni créées ni modifiables par notre application. D'autre
+part, une \textbf{base de données propre à l'application}, développée pour
+les besoins du projet, qui stocke les données métier que nous maîtrisons :
+les comptes utilisateurs et leurs niveaux d'habilitation, les lignes
+d'exploitation définies par l'entreprise, les trajets planifiés sur ces
+lignes, ainsi que les réservations effectuées par les clients.
+
 
 
 \subsection*{Utilisateurs de l'application}
 
-Trois niveaux d'habilitation sont distingués dans l'accès aux fonctionnalités
-de l'application : \textbf{CLIENT}, \textbf{COLLABORATEUR} et
-\textbf{ADMIN}.
-
-
+Trois différents niveaux d’habilitation sont distingués dans l’accès aux fonctionnalités de l’API de Concurrent SNCF : les clients, les collaborateurs et les administrateurs. Chaque utilisateur dispose d’un compte applicatif créé à partir d’un nom d’utilisateur et d’un mot de passe. Les clients peuvent notamment rechercher les trajets proposés et, dans le cadre de la fonctionnalité de réservation, réserver, consulter et annuler leurs trajets. Les collaborateurs sont chargés de la gestion de l’offre ferroviaire : ils peuvent créer, modifier et supprimer les lignes d’exploitation ainsi que planifier les trajets associés. Enfin, les administrateurs assurent la gestion des habilitations des utilisateurs en pouvant augmenter ou diminuer leur niveau d’accès. Ils ne peuvent toutefois pas modifier le niveau d’habilitation des autres administrateurs. Cette organisation permet ainsi de contrôler l’accès aux différentes fonctionnalités de l’application selon le rôle de chaque utilisateur et de sécuriser la gestion des données.
 
 \subsection*{Fonctionnalités de base}
 
@@ -150,9 +169,10 @@ de l'application : \textbf{CLIENT}, \textbf{COLLABORATEUR} et
     \item FO2 --- Classes de voyage
 \end{itemize}
 
+\clearpage
 \subsection*{Outils de développement}
 
-
+L’application sera développée en Python. La gestion et le stockage des données seront assurés par PostgreSQL. Enfin, afin de faciliter la coordination et le travail collaboratif entre les membres de l’équipe, nous utiliserons Github pour centraliser le code et suivre les différentes modifications apportées au projet.
 
 \clearpage
 \section{Étapes de réalisation}
@@ -173,7 +193,7 @@ d'analyse, de conception et de développement sur la durée du projet.
         width=0.95\textwidth,
         keepaspectratio
     ]{../doc/Diagramme_Gantt.png}
-    \caption{Diagramme de Gantt}
+    \caption{Diagramme de Gantt : Phase de conception et de développement}
     \label{fig:gantt}
 \end{figure}
 
@@ -186,7 +206,7 @@ d'analyse, de conception et de développement sur la durée du projet.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{../doc/Diagramme cas d'utilisation.png}
+    \includegraphics[width=0.5\textwidth]{../doc/Diagramme_cas_utilisation.png}
     \caption{Légende de l'image}
 \end{figure}
 
@@ -202,10 +222,22 @@ Les utilisateurs de l'application ont trois rôles, d'où le mécanisme d'hérit
 
 Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, il faut récupérer toutes les informations des gares, des horaires des trajets, etc. à partir de \textbf{l'API \textit{SNCF}}.
 
-\section{Diagramme de base de données}
+\section{Diagramme de classes}
 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../doc/Diagramme classes.png}
+    \caption{Légende de l'image}
+\end{figure}
 
 \section{Diagramme structure projet}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{../doc/Diagramme structure projet.png}
+    \caption{Légende de l'image}
+\end{figure}
+
 Ce diagramme structure projet dispose de 4 couches, chacune étant relative à une tâche bien précise.
 
 Le \textbf{Frontend} (Webmasters) envoie des requêtes dans le format HTTP/REST à la \textbf{couche Controller}, qui regroupe les points d'entrée de l'API : \texttt{AuthController} (F1),\texttt{LineController} (F2), \texttt{TripController} (F3) et \texttt{BookingController} (FO1), celle ci transmet le traitement à la couche sous-jacente. 
@@ -226,15 +258,15 @@ Ce diagramme représente le fonctionnement interne du traitement d'une requête 
 
 Nous sommes dans la situation où l'utilisateur cherche à faire un trajet entre deux gares.
 
-La requête est d'abord envoyée vers le Business Layer afin de répondre à la demande par une sélection parmi les meilleurs trajets.
+La requête est d'abord envoyée vers le \textbf{Business Layer} afin de répondre à la demande par une sélection parmi les meilleurs trajets.
 
-Le Business Layer commence par demander les informations de gares stockées en backend.
+Le \textbf{Business Layer} commence par demander les informations de gares stockées en \textbf{backend}.
 
-Une fois ces dernières reçues, une demande est faite à l'API SNCF afin d'obtenir la durée d'un trajet entre ces gares.
+Une fois ces dernières reçues, une demande est faite à l'\textbf{API SNCF} afin d'obtenir les différent trajets et leur durée entre les gares de départ et d'arrivée.
 
-Parallèlement, une demande sur les mêmes trajets fournies par notre entreprise est faite en backend.
+Parallèlement, une demande sur ces mêmes trajets fournis par notre entreprise est faite en \textbf{backend}.
 
-Il y a enfin comparaison entre les trajets fournis par l'API de SNCF et ceux que nous fournissons afin de présenter une liste de trajets optimaux.
+Il y a enfin comparaison entre les trajets fournis par l'\textbf{API SNCF} et ceux que fournis par notre entreprise afin de finaliser la liste de trajets optimaux.
 
 La réduction liée à l'abonnement qu'a souscrit l'utilisateur est enfin appliquée au prix des différents trajets et les résultats optimaux sont envoyés à l'utilisateur
 
