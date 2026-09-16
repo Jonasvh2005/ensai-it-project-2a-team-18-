@@ -10,7 +10,7 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
-\usepackage{microtype}
+\usepackage[expansion=false]{microtype}
 \addto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
 
 \geometry{margin=2.5cm}
@@ -280,8 +280,6 @@ Il y a enfin comparaison entre les trajets fournis par l'\textbf{API SNCF} et ce
 
 La réduction liée à l'abonnement qu'a souscrit l'utilisateur est enfin appliquée au prix des différents trajets et les résultats optimaux sont envoyés à l'utilisateur
 
-\end{document}
-
 
 \chapter{Endpoints de l'API}
 
@@ -346,3 +344,5 @@ endpoints. Les endpoints relevant de l'\texttt{AuthController} (\textbf{F1}), du
 \texttt{TripController} (\textbf{F3}) et du \texttt{BookingController}
 (\textbf{FO1}) restent à implémenter, de même que les fonctionnalités
 \textbf{F4} et \textbf{F5}.
+
+\end{document}

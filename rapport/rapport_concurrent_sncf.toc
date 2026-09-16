@@ -1,0 +1,13 @@
+\babel@toc {french}{}\relax 
+\contentsline {chapter}{\numberline {1}Organisation}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Cahier des charges}{4}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Étapes de réalisation}{6}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}Diagramme de Gantt}{6}{subsection.1.2.1}%
+\contentsline {chapter}{\numberline {2}Modélisation UML}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Diagramme de cas d'utilisation}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Diagramme de classes}{9}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Diagramme structure projet}{9}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Diagramme de séquence}{9}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Endpoints de l'API}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Endpoints consommés de l'API SNCF}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Endpoints exposés par notre API}{11}{section.3.2}%
