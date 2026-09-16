@@ -225,15 +225,15 @@ Ce diagramme représente le fonctionnement interne du traitement d'une requête 
 
 Nous sommes dans la situation où l'utilisateur cherche à faire un trajet entre deux gares.
 
-La requête est d'abord envoyée vers le Business Layer afin de répondre à la demande par une sélection parmi les meilleurs trajets.
+La requête est d'abord envoyée vers le \textbf{Business Layer} afin de répondre à la demande par une sélection parmi les meilleurs trajets.
 
-Le Business Layer commence par demander les informations de gares stockées en backend.
+Le \textbf{Business Layer} commence par demander les informations de gares stockées en \textbf{backend}.
 
-Une fois ces dernières reçues, une demande est faite à l'API SNCF afin d'obtenir la durée d'un trajet entre ces gares.
+Une fois ces dernières reçues, une demande est faite à l'\textbf{API SNCF} afin d'obtenir les différent trajets et leur durée entre les gares de départ et d'arrivée.
 
-Parallèlement, une demande sur les mêmes trajets fournies par notre entreprise est faite en backend.
+Parallèlement, une demande sur ces mêmes trajets fournis par notre entreprise est faite en \textbf{backend}.
 
-Il y a enfin comparaison entre les trajets fournis par l'API de SNCF et ceux que nous fournissons afin de présenter une liste de trajets optimaux.
+Il y a enfin comparaison entre les trajets fournis par l'\textbf{API SNCF} et ceux que fournis par notre entreprise afin de finaliser la liste de trajets optimaux.
 
 La réduction liée à l'abonnement qu'a souscrit l'utilisateur est enfin appliquée au prix des différents trajets et les résultats optimaux sont envoyés à l'utilisateur
 
