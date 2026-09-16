@@ -243,14 +243,28 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
     \caption{Légende de l'image}
 \end{figure}
 
-Ce diagramme structure projet dispose de 4 couches, chacune étant relative à une tâche bien précise.
+Ce diagramme de structure du projet dispose de 4 couches, chacune étant
+relative à une tâche bien précise.
 
-Le \textbf{Frontend} (Webmasters) envoie des requêtes dans le format HTTP/REST à la \textbf{couche Controller}, qui regroupe les points d'entrée de l'API : \texttt{AuthController} (F1),\texttt{LineController} (F2), \texttt{TripController} (F3) et \texttt{BookingController} (FO1), celle ci transmet le traitement à la couche sous-jacente. 
+Le \textbf{Frontend (Webmasters)} envoie des requêtes au format HTTP/REST à
+la couche \textbf{Controller}, qui regroupe les points d'entrée de l'API :
+\texttt{AuthController} (F1), \texttt{LineController} (F2),
+\texttt{TripController} (F3) et \texttt{BookingController} (FO1) ; celle-ci
+transmet ensuite le traitement à la couche sous-jacente.
 
-La \textbf{couche Service} fonctionne dans une logique dans laquelle chaque service correspond à un domaine fonctionnel (comptes, lignes, trajets, réservations) et se base sur la couche Repository pour avoir accès aux données. \texttt{LineService} et \texttt{TripService} font également appel à \texttt{SNCFClientService}, point d'entrée unique et centralisé vers l'API SNCF externe, afin d'éviter que plusieurs services n'implémentent chacun leurs propres appels HTTP vers l'API SNCF.
+La couche \textbf{Service} fonctionne selon une logique dans laquelle chaque
+service correspond à un domaine fonctionnel (comptes, lignes, trajets,
+réservations) et s'appuie sur la couche Repository pour avoir accès aux
+données. \texttt{LineService} et \texttt{TripService} font également appel à
+\texttt{SNCFClientService}, point d'entrée unique et centralisé vers l'API
+SNCF externe, afin d'éviter que plusieurs services n'implémentent chacun
+leurs propres appels HTTP vers l'API SNCF.
 
-La \textbf{couche DAO/Repository} est la seule à dialoguer directement avec la base de données PostgreSQL. Chaque repository (\texttt{UserRepository}, \texttt{LineRepository}, \texttt{StationRepository}, \texttt{TripRepository}, \texttt{BookingRepository}) est responsable d'une seule entité.
-
+La couche \textbf{DAO/Repository} est la seule à dialoguer directement avec
+la base de données PostgreSQL. Chaque repository
+(\texttt{UserRepository}, \texttt{LineRepository}, \texttt{StationRepository},
+\texttt{TripRepository}, \texttt{BookingRepository}) est responsable d'une
+seule entité.
 \section{Diagramme de séquence}
 
 \begin{figure}[htbp]
