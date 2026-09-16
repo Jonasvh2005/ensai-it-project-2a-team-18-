@@ -125,11 +125,7 @@ d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
 
 \subsection*{Utilisateurs de l'application}
 
-Trois niveaux d'habilitation sont distingués dans l'accès aux fonctionnalités
-de l'application : \textbf{CLIENT}, \textbf{COLLABORATEUR} et
-\textbf{ADMIN}.
-
-
+Trois différents niveaux d’habilitation sont distingués dans l’accès aux fonctionnalités de l’API de Concurrent SNCF : les clients, les collaborateurs et les administrateurs. Chaque utilisateur dispose d’un compte applicatif créé à partir d’un nom d’utilisateur et d’un mot de passe. Les clients peuvent notamment rechercher les trajets proposés et, dans le cadre de la fonctionnalité de réservation, réserver, consulter et annuler leurs trajets. Les collaborateurs sont chargés de la gestion de l’offre ferroviaire : ils peuvent créer, modifier et supprimer les lignes d’exploitation ainsi que planifier les trajets associés. Enfin, les administrateurs assurent la gestion des habilitations des utilisateurs en pouvant augmenter ou diminuer leur niveau d’accès. Ils ne peuvent toutefois pas modifier le niveau d’habilitation des autres administrateurs. Cette organisation permet ainsi de contrôler l’accès aux différentes fonctionnalités de l’application selon le rôle de chaque utilisateur et de sécuriser la gestion des données.
 
 \subsection*{Fonctionnalités de base}
 
@@ -151,7 +147,7 @@ de l'application : \textbf{CLIENT}, \textbf{COLLABORATEUR} et
 
 \subsection*{Outils de développement}
 
-
+L’application sera développée en Python. La gestion et le stockage des données seront assurés par PostgreSQL. Enfin, afin de faciliter la coordination et le travail collaboratif entre les membres de l’équipe, nous utiliserons Github pour centraliser le code et suivre les différentes modifications apportées au projet.
 
 \clearpage
 \section{Étapes de réalisation}
@@ -172,7 +168,7 @@ d'analyse, de conception et de développement sur la durée du projet.
         width=0.95\textwidth,
         keepaspectratio
     ]{../doc/Diagramme_Gantt.png}
-    \caption{Diagramme de Gantt}
+    \caption{Diagramme de Gantt : Phase de conception et de développement}
     \label{fig:gantt}
 \end{figure}
 
