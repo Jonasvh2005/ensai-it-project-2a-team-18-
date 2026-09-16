@@ -10,6 +10,7 @@
 \usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{titlesec}
+\usepackage{float}
 \usepackage[expansion=false]{microtype}
 \addto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
 
@@ -160,7 +161,7 @@ Trois différents niveaux d’habilitation sont distingués dans l’accès aux 
 
 L’application sera développée en Python. La gestion et le stockage des données seront assurés par PostgreSQL. Enfin, afin de faciliter la coordination et le travail collaboratif entre les membres de l’équipe, nous utiliserons Github pour centraliser le code et suivre les différentes modifications apportées au projet.
 
-\clearpage
+
 \section{Étapes de réalisation}
 
 La réalisation du projet a été organisée en plusieurs étapes,
@@ -179,12 +180,12 @@ La deuxième se concentre sur le développement de l'application et l'écriture 
 rapport final. Puis la dernière partie sera dédiée à la préparation pour la
 soutenance.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[
-        width=\textwidth,
+        width=0.9\textwidth,
         keepaspectratio
-    ]{../doc/Diagramme_Gantt.png}
+    ]{../doc/Diagramme de Gantt.png}
     \caption{Diagramme de Gantt : Phase de conception et de développement}
     \label{fig:gantt}
 \end{figure}
@@ -196,7 +197,7 @@ soutenance.
 
 \section{Diagramme de cas d'utilisation}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[
         width=\textwidth,
@@ -220,9 +221,11 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
 
 \section{Diagramme de classes}
 
+\textbf{Écrire ici la partie sur le diagramme de classes pour l'organisation}
+
 \clearpage
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
     \includegraphics[
         width=\linewidth,
@@ -234,9 +237,9 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
 
 \section{Diagramme structure projet}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[angle=90,width=0.43\textwidth,keepaspectratio]{../doc/Diagramme structure projet.png}
+    \includegraphics[angle=90,width=0.41\textwidth,keepaspectratio]{../doc/Diagramme structure projet.png}
     \caption{Diagramme de struture du projet}
 \end{figure}
 
@@ -264,9 +267,9 @@ la base de données PostgreSQL. Chaque repository
 seule entité.
 \section{Diagramme de séquence}
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
-    \includegraphics[angle=90,width=0.44\textwidth,keepaspectratio]{../doc/Diagramme séquence.png}
+    \includegraphics[angle=90,width=0.435\textwidth,keepaspectratio]{../doc/Diagramme séquence.png}
     \caption{Diagramme de séquence}
 \end{figure}
 

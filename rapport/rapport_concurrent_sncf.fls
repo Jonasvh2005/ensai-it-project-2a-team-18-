@@ -107,6 +107,8 @@ INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/titlesec/titlesec.sty
+INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/float/float.sty
+INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/float/float.sty
 INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
 INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/microtype/microtype.sty
 INPUT /home/onyxia/.TinyTeX/texmf-dist/tex/latex/microtype/microtype-pdftex.def
@@ -174,11 +176,11 @@ INPUT /home/onyxia/.TinyTeX/texmf-dist/fonts/tfm/public/cm/cmsy8.tfm
 INPUT /home/onyxia/.TinyTeX/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 OUTPUT rapport_concurrent_sncf.toc
 INPUT /home/onyxia/.TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm
-INPUT ../doc/Diagramme_Gantt.png
-INPUT ../doc/Diagramme_Gantt.png
-INPUT ../doc/Diagramme_Gantt.png
-INPUT ../doc/Diagramme_Gantt.png
-INPUT ../doc/Diagramme_Gantt.png
+INPUT ../doc/Diagramme de Gantt.png
+INPUT ../doc/Diagramme de Gantt.png
+INPUT ../doc/Diagramme de Gantt.png
+INPUT ../doc/Diagramme de Gantt.png
+INPUT ../doc/Diagramme de Gantt.png
 INPUT /home/onyxia/.TinyTeX/texmf-dist/fonts/tfm/jknappen/ec/eccc1200.tfm
 INPUT ../doc/Diagramme_cas_utilisation.png
 INPUT ../doc/Diagramme_cas_utilisation.png
