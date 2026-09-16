@@ -104,7 +104,10 @@ d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
     \item F2 --- Gestion des lignes d'exploitation: Des lignes d'exploitations entre deux gares (une de départ et une autre d'arrivée) sont créées par les collaborateurs qui récupéreront ces informations sur l'API de la SNCF, cette dernière qui nous aidera lorsqu'une saisie sera faite au niveau du moteur de recherche de s'assurer que la gare saisie existe réellement. Le collaborateur a également la possibilité de supprimer une ligne d'exploitation.
     \item F3 --- Gestion des trajets proposés: Cette fonctionalité permet au collaborateur de planifier des trajets sur une ligne d'exploitation, celle-ci mentionnera la date, l'heure, le nombre de places disponible et le tarif. Elle nous permet de nous assurer qu'il est possible d'effectuer un trajet entre deux gares tout en calculant le temps de trajet en train via l'API de la SNCF. Le collaborateur peut également modifier un trajet planifié et le supprimé.
     \item F4 --- Recherche d'un trajet: Cette fonctionnalité permettra aux clients de pouvoir rechercher les trajets possibles à partir d'une gare de départ et d'une gare d'arrivée tout en lui fournissant une aide à la saisie des gares pour faciliter aux clients de trouver le nom des gares. Elle permet au client de pouvoir visualiser la gare de départ, d'arrivée la date et l'heure d'arrivée et une estimation du temps de trajet.
-    \item F5 --- Positionnement commercial (fonctionnalité différenciante):
+    \item F5 --- Positionnement commercial (fonctionnalité différenciante): Cette fonctionnalité permet de se démarquer par rapport aux autres sites de réservation de billets de train. Cette fonctionnalité est le fai de renvoyer une liste de tous les trajets optimaux lors d'une recherche, que ce soit en terme de durée de trajet, de prix, de nombre de correspondance ou d'heure d'arrivée.
+    \item FO1 --- Réservation de trajet: Cette fonctionnalité optionnelle permet à l'utilisateur de réserver un trajet en plus de le rechercher. L'utilisateur pourra aussi savoir le nombre de places restants dans le train. De plus, il aura la capacité d'annulé son trajet
+    \item FO2 --- Classes de voyage: Cette fonctionnalité permettra à l'utilisateur de choisir entre la classe standard et la classe premium pour son trajet. 
+
 \end{itemize}
 
 \vspace{0.3cm}
@@ -151,23 +154,6 @@ lignes, ainsi que les réservations effectuées par les clients.
 
 Trois différents niveaux d’habilitation sont distingués dans l’accès aux fonctionnalités de l’API de Concurrent SNCF : les clients, les collaborateurs et les administrateurs. Chaque utilisateur dispose d’un compte applicatif créé à partir d’un nom d’utilisateur et d’un mot de passe. Les clients peuvent notamment rechercher les trajets proposés et, dans le cadre de la fonctionnalité de réservation, réserver, consulter et annuler leurs trajets. Les collaborateurs sont chargés de la gestion de l’offre ferroviaire : ils peuvent créer, modifier et supprimer les lignes d’exploitation ainsi que planifier les trajets associés. Enfin, les administrateurs assurent la gestion des habilitations des utilisateurs en pouvant augmenter ou diminuer leur niveau d’accès. Ils ne peuvent toutefois pas modifier le niveau d’habilitation des autres administrateurs. Cette organisation permet ainsi de contrôler l’accès aux différentes fonctionnalités de l’application selon le rôle de chaque utilisateur et de sécuriser la gestion des données.
 
-\subsection*{Fonctionnalités de base}
-
-
-\begin{itemize}
-    \item F1 --- Gestion des comptes utilisateur
-    \item F2 --- Gestion des lignes d'exploitation
-    \item F3 --- Gestion des trajets proposés
-    \item F4 --- Recherche d'un trajet
-    \item F5 --- Positionnement commercial (fonctionnalité différenciante)
-\end{itemize}
-
-\subsection*{Fonctionnalités optionnelles}
-
-\begin{itemize}
-    \item FO1 --- Réservation de trajet
-    \item FO2 --- Classes de voyage
-\end{itemize}
 
 \clearpage
 \subsection*{Outils de développement}
