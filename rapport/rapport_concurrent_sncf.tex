@@ -221,7 +221,30 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
 
 \section{Diagramme de classes}
 
-\textbf{Écrire ici la partie sur le diagramme de classes pour l'organisation}
+Ce diagramme détaille les classes de l'application, leurs méthodes et les
+entités manipulées. Il s'organise en quatre ensembles, dont l'articulation est
+présentée dans la section suivante.
+
+Chaque \textbf{controller} expose les points d'entrée \textit{REST} d'une
+fonctionnalité et se contente de transmettre les requêtes : le
+\texttt{LineController} propose ainsi les opérations de consultation, de
+création, de modification et de suppression d'une ligne, correspondant
+directement aux exigences de la fonctionnalité \textbf{F2}.
+
+Les \textbf{services} portent la logique métier et reprennent les mêmes
+opérations, enrichies des traitements propres au domaine. Le
+\texttt{TripService} sollicite le \texttt{SNCFClientService} pour vérifier
+l'existence d'une liaison ferroviaire et en calculer la durée lors de la
+planification d'un trajet (\textbf{F3}).
+
+Les \textbf{repositories} exposent les opérations élémentaires de persistance
+sur une entité unique. Le \texttt{TripRepository} comporte en outre une méthode
+\texttt{search} dédiée à la recherche de trajets par gares et par date
+(\textbf{F4}).
+
+Le \textbf{modèle métier} regroupe enfin les cinq entités persistées en base :
+\texttt{User}, \texttt{Line}, \texttt{Station}, \texttt{Trip} et
+\texttt{Booking}.
 
 \clearpage
 
@@ -234,6 +257,12 @@ Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, i
     ]{../doc/Diagramme classes.png}
     \caption{Diagramme de classes}
 \end{figure}
+
+Ce diagramme détaille les classes de l'application, leurs méthodes et les
+entités manipulées. Il s'organise en quatre ensembles, dont l'articulation est
+présentée dans la section suivante.
+
+
 
 \section{Diagramme structure projet}
 
