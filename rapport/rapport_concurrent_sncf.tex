@@ -119,6 +119,7 @@ d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
 
 \section{Cahier des charges}
 
+
 \subsection*{Présentation d'ensemble du projet Concurrent SNCF}
 
 
@@ -238,3 +239,68 @@ Il y a enfin comparaison entre les trajets fournis par l'API de SNCF et ceux que
 La réduction liée à l'abonnement qu'a souscrit l'utilisateur est enfin appliquée au prix des différents trajets et les résultats optimaux sont envoyés à l'utilisateur
 
 \end{document}
+
+
+\chapter{Endpoints de l'API}
+
+Ce chapitre précise la mise en œuvre des échanges décrits dans le diagramme de
+structure du projet : les appels vers l'API externe, centralisés dans le
+\texttt{SNCFClientService}, et les points d'entrée exposés par la couche
+\textbf{Controller}.
+
+\section{Endpoints consommés de l'API SNCF}
+
+Comme indiqué dans le diagramme de cas d'utilisation, la gestion des gares et
+des lignes ainsi que la recherche de trajets nécessitent de récupérer des
+informations auprès de l'API \textit{SNCF}. Deux endpoints ont été retenus à
+cette fin.
+
+L'endpoint \texttt{/places} permet de rechercher des gares par autocomplétion.
+Chaque résultat associe un libellé à un identifiant de la forme
+\texttt{stop\_area:SNCF:87686006}. Il répond à l'exigence d'aide à la saisie des
+fonctionnalités \textbf{F2} et \textbf{F4}.
+
+L'endpoint \texttt{/journeys} calcule les itinéraires entre deux gares et
+fournit la durée du trajet. Il permet à la fois de vérifier qu'une liaison
+ferroviaire existe et d'obtenir le temps de trajet exigé pour la fonctionnalité
+\textbf{F3}. Il correspond à l'appel représenté dans le diagramme de séquence,
+par lequel le \textit{Business Layer} obtient la durée d'un trajet entre deux
+gares.
+
+Conformément au diagramme de structure, ces appels sont regroupés dans un module
+unique jouant le rôle du \texttt{SNCFClientService}, afin d'éviter que plusieurs
+services n'implémentent chacun leurs propres requêtes vers l'API externe.
+
+\section{Endpoints exposés par notre API}
+
+Les endpoints développés à ce stade relèvent du \texttt{LineController} et
+couvrent la fonctionnalité \textbf{F2}, ainsi que l'aide à la saisie des gares
+commune aux fonctionnalités \textbf{F2} et \textbf{F4}.
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabular}{lll}
+        \hline
+        \textbf{Méthode} & \textbf{Chemin} & \textbf{Description} \\
+        \hline
+        GET    & \texttt{/gares}         & Recherche de gares par autocomplétion \\
+        GET    & \texttt{/lignes}        & Consultation des lignes d'exploitation \\
+        POST   & \texttt{/lignes}        & Création d'une ligne entre deux gares \\
+        DELETE & \texttt{/lignes/\{id\}} & Suppression d'une ligne \\
+        \hline
+    \end{tabular}
+    \caption{Endpoints exposés par l'API}
+    \label{tab:endpoints}
+\end{table}
+
+Ces endpoints sont accessibles au profil \textbf{COLLABORATEUR} tel que défini
+dans le diagramme de cas d'utilisation, à l'exception de la recherche de gares,
+également utilisée par le profil \textbf{CLIENT}. Le contrôle effectif des
+habilitations sera mis en place avec la fonctionnalité \textbf{F1}.
+
+La documentation interactive, générée automatiquement au format
+\textit{OpenAPI} et accessible à l'adresse \texttt{/docs}, permet de tester ces
+endpoints. Les endpoints relevant de l'\texttt{AuthController} (\textbf{F1}), du
+\texttt{TripController} (\textbf{F3}) et du \texttt{BookingController}
+(\textbf{FO1}) restent à implémenter, de même que les fonctionnalités
+\textbf{F4} et \textbf{F5}.
