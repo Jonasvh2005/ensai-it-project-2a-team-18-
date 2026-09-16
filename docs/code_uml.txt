@@ -58,85 +58,234 @@ UC_Search .> "<<include>>"UC_SNCF_Sync
 
 @startuml
 
-enum Role {
-  CLIENT
-  COLLABORATEUR
-  ADMIN
+title Diagramme de classes
+
+' =========================================================
+' PARAMETRES GENERAUX
+' =========================================================
+
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ort
+skinparam shadowing false
+
+hide circle
+
+left to right direction
+
+
+' =========================================================
+' COUCHE CONTROLLER
+' =========================================================
+
+package "Couche Controller (REST)" {
+
+    class AuthController <<Controller>> {
+        + login(email : String, motDePasse : String)
+        + register(user : User)
+    }
+
+    class LineController <<Controller>> {
+        + getLines()
+        + getLine(id : int)
+        + createLine(line : Line)
+        + updateLine(line : Line)
+        + deleteLine(id : int)
+    }
+
+    class TripController <<Controller>> {
+        + searchTrips(depart : String, arrivee : String, date : Date)
+        + getTrip(id : int)
+        + createTrip(trip : Trip)
+        + updateTrip(trip : Trip)
+        + deleteTrip(id : int)
+    }
+
+    class BookingController <<Controller>> {
+        + createBooking(booking : Booking)
+        + getBooking(id : int)
+        + getUserBookings(userId : int)
+        + cancelBooking(id : int)
+    }
 }
 
-enum BookingStatus {
-  PAYE
-  ANNULE
-  EN ATTENTE DE PAIEMENT
+
+' =========================================================
+' COUCHE SERVICE
+' =========================================================
+
+package "Couche Service (Métier)" {
+
+    class AuthService <<Service>> {
+        + authenticate(email : String, motDePasse : String)
+        + register(user : User)
+    }
+
+    class LineService <<Service>> {
+        + getAllLines()
+        + getLine(id : int)
+        + createLine(line : Line)
+        + updateLine(line : Line)
+        + deleteLine(id : int)
+    }
+
+    class TripService <<Service>> {
+        + searchTrips(depart : String, arrivee : String, date : Date)
+        + getTrip(id : int)
+        + createTrip(trip : Trip)
+        + updateTrip(trip : Trip)
+        + deleteTrip(id : int)
+    }
+
+    class BookingService <<Service>> {
+        + createBooking(booking : Booking)
+        + getBooking(id : int)
+        + getUserBookings(userId : int)
+        + cancelBooking(id : int)
+    }
+
+    class SNCFClientService <<Service>> {
+        + searchTripsFromSNCF()
+        + getStationsFromSNCF()
+        + getLinesFromSNCF()
+    }
 }
 
-class User {
-  + id : Integer
-  + username : String
-  + email : String
-  + passwordHash : String
-  + role : Role
-  + subscriptionId : Integer
-  + register()
-  + login()
+
+' =========================================================
+' COUCHE DAO / REPOSITORY
+' =========================================================
+
+package "Couche DAO / Repository" {
+
+    class UserRepository <<Repository>> {
+        + findById(id : int)
+        + findByEmail(email : String)
+        + save(user : User)
+        + update(user : User)
+        + delete(id : int)
+    }
+
+    class LineRepository <<Repository>> {
+        + findAll()
+        + findById(id : int)
+        + save(line : Line)
+        + update(line : Line)
+        + delete(id : int)
+    }
+
+    class StationRepository <<Repository>> {
+        + findAll()
+        + findById(id : int)
+        + findByName(name : String)
+    }
+
+    class TripRepository <<Repository>> {
+        + findAll()
+        + findById(id : int)
+        + search(depart : String, arrivee : String, date : Date)
+        + save(trip : Trip)
+        + update(trip : Trip)
+        + delete(id : int)
+    }
+
+    class BookingRepository <<Repository>> {
+        + findById(id : int)
+        + findByUser(userId : int)
+        + save(booking : Booking)
+        + update(booking : Booking)
+        + delete(id : int)
+    }
 }
 
-class Subscription {
-  + id : Integer
-  + name : String
-  + discountPercentage : Float
-  + conditions : String
+
+' =========================================================
+' MODELE METIER
+' =========================================================
+
+package "Modèle métier" {
+
+    class User <<Entity>> {
+        - id : int
+        - nom : String
+        - email : String
+        - motDePasse : String
+        - role : String
+    }
+
+    class Line <<Entity>> {
+        - id : int
+        - nom : String
+    }
+
+    class Station <<Entity>> {
+        - id : int
+        - nom : String
+        - code : String
+    }
+
+    class Trip <<Entity>> {
+        - id : int
+        - date : Date
+        - heureDepart : Time
+        - heureArrivee : Time
+    }
+
+    class Booking <<Entity>> {
+        - id : int
+        - dateReservation : Date
+        - statut : String
+    }
 }
 
-class Station {
-  + id : Integer
-  + codeGareSNCF : String
-  + name : String
-  + city : String
-}
 
-class StationAdjacency {
-  + id : Integer
-  + station1Id : Integer
-  + station2Id : Integer
-  + railType : String
-}
+' =========================================================
+' CONTROLLERS -> SERVICES
+' =========================================================
 
-class OperatingLine {
-  + id : Integer
-  + code : String
-  + departureStationId : Integer
-  + arrivalStationId : Integer
-  + estimatedDurationMinutes : Integer
-}
+AuthController ..> AuthService
+LineController ..> LineService
+TripController ..> TripService
+BookingController ..> BookingService
 
-class Trip {
-  + id : Integer
-  + lineId : Integer
-  + departureTime : DateTime
-  + arrivalTime : DateTime
-  + totalSeats : Integer
-  + availableSeats : Integer
-  + basePrice : Float
-}
 
-class Booking {
-  + id : Integer
-  + userId : Integer
-  + tripId : Integer
-  + status : BookingStatus
-  + finalPrice : Float
-  + createdAt : DateTime
-  + cancel()
-}
+' =========================================================
+' SERVICES -> REPOSITORIES
+' =========================================================
 
-' Relations
-User "0..*" -- "0..1" Subscription : souscrit à >
-User "1" -- "0..*" Booking : passe >
-Booking "0..*" -- "1" Trip : concerne >
-Trip "0..*" -- "1" OperatingLine : s'exécute sur >
-OperatingLine "1" -- "2" Station : relie >
-StationAdjacency "0..*" -- "2" Station : connecte >
+AuthService ..> UserRepository
+
+LineService ..> LineRepository
+LineService ..> StationRepository
+
+TripService ..> TripRepository
+TripService ..> LineRepository
+TripService ..> StationRepository
+
+BookingService ..> BookingRepository
+BookingService ..> TripRepository
+BookingService ..> UserRepository
+
+
+' =========================================================
+' SERVICE SNCF
+' =========================================================
+
+TripService ..> SNCFClientService
+
+' =========================================================
+' SERVICES -> ENTITES
+' =========================================================
+
+AuthService ..> User
+
+LineService ..> Line
+LineService ..> Station
+
+TripService ..> Trip
+
+BookingService ..> Booking
+
 
 @enduml
 
