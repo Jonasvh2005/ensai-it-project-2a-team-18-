@@ -198,8 +198,12 @@ soutenance.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{../doc/Diagramme_cas_utilisation.png}
-    \caption{Légende de l'image}
+    \includegraphics[
+        width=\textwidth,
+        keepaspectratio
+    ]{../doc/Diagramme_cas_utilisation.png}
+    \caption{Diagramme de cas d'utilisation}
+    \label{fig:usecase}
 \end{figure}
 
 Ce diagramme de cas d'utilisation délimite la zone fonctionnelle du backend et structure les interactions selon le profil de l'utilisateur et avec l'API externe de la \textit{SNCF}.
@@ -214,28 +218,28 @@ Les utilisateurs de l'application ont trois rôles, d'où le mécanisme d'hérit
 
 Pour rechercher un trajet, agir sur les trajets et gérer les gares et lignes, il faut récupérer toutes les informations des gares, des horaires des trajets, etc. à partir de \textbf{l'API \textit{SNCF}}.
 
-\clearpage
-
 \section{Diagramme de classes}
+
+\clearpage
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[
-        width=0.95\linewidth,
+        width=\linewidth,
         height=0.90\textheight,
         keepaspectratio
     ]{../doc/Diagramme classes.png}
-    \caption{Légende de l'image}
+    \caption{Diagramme de classes}
 \end{figure}
 
 \section{Diagramme structure projet}
-\begin{landscape}
+
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{../doc/Diagramme structure projet.png}
-    \caption{Légende de l'image}
+    \includegraphics[angle=90,width=0.43\textwidth,keepaspectratio]{../doc/Diagramme structure projet.png}
+    \caption{Diagramme de struture du projet}
 \end{figure}
-\end{landscape}
+
 Ce diagramme de structure du projet dispose de 4 couches, chacune étant
 relative à une tâche bien précise.
 
@@ -262,7 +266,7 @@ seule entité.
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=0.5\textwidth]{../doc/Diagramme séquence.png}
+    \includegraphics[angle=90,width=0.44\textwidth,keepaspectratio]{../doc/Diagramme séquence.png}
     \caption{Diagramme de séquence}
 \end{figure}
 
