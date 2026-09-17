@@ -69,6 +69,35 @@ Date : Jeudi 10 Septembre
 ---
 
 ## Backlog
+# Point Hebdomadaire - Projet
+
+## Semaine n°3
+Date : Jeudi 17 Septembre
+
+## Tâches réalisées cette semaine
+
+### YVANO Maxime
+
+
+### VAN HECKE Jonas
+
+### SIDOBRE Noé
+
+### OUATTARA Youssouf Adam
+- Rédaction des objectifs dans le rapport d'Analyse
+- Présentation d'ensemble du projet concurrent SNCF 
+- Commentaire du diagramme structure-projet  
+###  ARRAJI Salma
+ras
+---
+
+## Backlog
+
+> Liste des tâches en attente de prise en charge.
+
+### Prioritaires
+
+### Secondaires
 
 > Liste des tâches en attente de prise en charge.
 
