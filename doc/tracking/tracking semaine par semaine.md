@@ -82,13 +82,18 @@ Date : Jeudi 17 Septembre
 ### VAN HECKE Jonas
 
 ### SIDOBRE Noé
-
+- Mise en page du rapport d'analyse
+- Participation à l'adaptation du diagramme de classe au diagramme de séquence
+- Commentaire utilisateurs de l'application + diagramme de Gantt
+  
 ### OUATTARA Youssouf Adam
 - Rédaction des objectifs dans le rapport d'Analyse
 - Présentation d'ensemble du projet concurrent SNCF 
-- Commentaire du diagramme structure-projet  
+- Commentaire du diagramme structure-projet
+
 ###  ARRAJI Salma
-ras
+- Mise en page du rapport d'analyse
+- Elaboration d'une troisième partie : Endpoints de l'API
 ---
 
 ## Backlog
