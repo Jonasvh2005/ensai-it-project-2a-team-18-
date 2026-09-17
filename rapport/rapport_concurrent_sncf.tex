@@ -276,8 +276,8 @@ relative à une tâche bien précise.
 
 Le \textbf{Frontend (Webmasters)} envoie des requêtes au format HTTP/REST à
 la couche \textbf{Controller}, qui regroupe les points d'entrée de l'API :
-\texttt{AuthController} (F1), \texttt{LineController} (F2),
-\texttt{TripController} (F3) et \texttt{BookingController} (FO1) ; celle-ci
+AuthController (F1), LineController (F2),
+TripController (F3) et BookingController (FO1) ; celle-ci
 transmet ensuite le traitement à la couche sous-jacente.
 
 La couche \textbf{Service} fonctionne selon une logique dans laquelle chaque
@@ -290,8 +290,8 @@ leurs propres appels HTTP vers l'API SNCF.
 
 La couche \textbf{DAO/Repository} est la seule à dialoguer directement avec
 la base de données PostgreSQL. Chaque repository
-(\texttt{UserRepository}, \texttt{LineRepository}, \texttt{StationRepository},
-\texttt{TripRepository}, \texttt{BookingRepository}) est responsable d'une
+(UserRepository, LineRepository, StationRepository,
+TripRepository, BookingRepository) est responsable d'une
 seule entité.
 \section{Diagramme de séquence}
 
