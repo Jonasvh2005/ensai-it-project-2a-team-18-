@@ -71,7 +71,9 @@ Date : Jeudi 17 Septembre
 ## Tâches réalisées cette semaine
 
 ### YVANO Maxime
-
+- Corrections des diagrammes
+- Mise en page du rapport d'analyse
+- Commentaires diagramme cas d'utilisation
 
 ### VAN HECKE Jonas
 
