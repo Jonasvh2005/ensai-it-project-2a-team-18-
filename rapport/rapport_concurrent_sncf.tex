@@ -102,10 +102,10 @@ notre entreprise de proposer des trajets en train à ses clients.
 \noindent\textbf{Objectif.} Développer une API permettant, selon le niveau
 d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
 \begin{itemize}
-    \item F1 --- Gestion des comptes utilisateur: Cette fonctionnalité permet à tout utilisateur souhaitant accéder à l'application soit créer son compte à l'aide d'un mot de passe et de son nom, soit se connecter s'il avait déjà effectué cette étape dans le passé; une fois le compte créé, l'utilisateur a la possibilité d'être soit un collaborateur, soit un administrateur, soit un client et dans le cas où celui-ci est un administrateur, il peut gérer le niveau d'habilitation des comptes sauf celui des autres comptes administrateurs.
-    \item F2 --- Gestion des lignes d'exploitation: Des lignes d'exploitation entre deux gares (une gare de départ et une gare d'arrivée) sont créées par les collaborateurs qui récupéreront ces informations sur l'API de la SNCF, cette dernière qui nous aidera lorsqu'une saisie sera faite au niveau du moteur de recherche de s'assurer que la gare saisie existe réellement. Le collaborateur a également la possibilité de supprimer une ligne d'exploitation.
+    \item F1 --- Gestion des comptes utilisateur: Cette fonctionnalité permet à tout utilisateur souhaitant accéder à l'application soit de créer son compte à l'aide d'un mot de passe et de son nom, soit de se connecter s'il avait déjà effectué cette étape dans le passé; une fois le compte créé, l'utilisateur a la possibilité d'être soit un collaborateur, soit un administrateur, soit un client et dans le cas où celui-ci est un administrateur, il peut gérer le niveau d'habilitation des comptes sauf celui des autres comptes administrateurs.
+    \item F2 --- Gestion des lignes d'exploitation: Des lignes d'exploitation entre deux gares (une gare de départ et une gare d'arrivée) sont créées par les collaborateurs qui récupéreront ces informations sur l'API de la SNCF, cette dernière nous aidera, lorsqu'une saisie sera faite au niveau du moteur de recherche, de s'assurer que la gare saisie existe réellement. Le collaborateur a également la possibilité de supprimer une ligne d'exploitation.
     \item F3 --- Gestion des trajets proposés: Cette fonctionnalité permet au collaborateur de planifier des trajets sur une ligne d'exploitation, celle-ci mentionnera la date, l'heure, le nombre de places disponibles et le tarif. Elle nous permet de nous assurer qu'il est possible d'effectuer un trajet entre deux gares tout en calculant le temps de trajet en train via l'API de la SNCF. Le collaborateur peut également modifier un trajet planifié et le supprimer.
-    \item F4 --- Recherche d'un trajet: Cette fonctionnalité permettra aux clients de pouvoir rechercher les trajets possibles à partir d'une gare de départ et d'une gare d'arrivée tout en lui fournissant une aide à la saisie des gares pour faciliter la recherche des noms des gares pour les clients. Elle permet au client de pouvoir visualiser la gare de départ, d'arrivée, la date et l'heure d'arrivée et une estimation du temps de trajet.
+    \item F4 --- Recherche d'un trajet: Cette fonctionnalité permettra aux clients de pouvoir rechercher les trajets possibles à partir d'une gare de départ et d'une gare d'arrivée tout en leur fournissant une aide à la saisie des gares pour faciliter la recherche des noms des gares pour les clients. Elle permet au client de pouvoir visualiser la gare de départ, d'arrivée, la date et l'heure d'arrivée et une estimation du temps de trajet.
     \item F5 --- Positionnement commercial (fonctionnalité différenciante): Cette fonctionnalité permet de se démarquer par rapport aux autres sites de réservation de billets de train. Cette fonctionnalité est le fait de renvoyer une liste de tous les trajets optimaux lors d'une recherche, que ce soit en termes de durée de trajet, de prix, de nombre de correspondances ou d'heure d'arrivée.
     \item FO1 --- Réservation de trajet: Cette fonctionnalité optionnelle permet à l'utilisateur de réserver un trajet en plus de le rechercher. L'utilisateur pourra aussi savoir le nombre de places restantes dans le train. De plus, il aura la capacité d'annuler son trajet
     \item FO2 --- Classes de voyage: Cette fonctionnalité permettra à l'utilisateur de choisir entre la classe standard et la classe premium pour son trajet. 
@@ -129,7 +129,7 @@ d'habilitation de l'utilisateur (CLIENT, COLLABORATEUR ou ADMIN) :
 \subsection*{Présentation d'ensemble du projet Concurrent SNCF}
 
 Dans le cadre de notre projet d'informatique de deuxième année, il nous a été demandé de concevoir une solution logicielle destinée à une société de
-transport ferroviaire nouvellement créée dénommée \textbf{Concurrent SNCF}, exploitant le réseau SNCF. Celle-ci s'adresse à plusieurs utilisateurs dont les \textbf{clients} souhaitant rechercher et réserver
+transport ferroviaire nouvellement créée, dénommée \textbf{Concurrent SNCF}, exploitant le réseau SNCF. Celle-ci s'adresse à plusieurs utilisateurs dont les \textbf{clients} souhaitant rechercher et réserver
 des trajets en train, les \textbf{collaborateurs} de
 l'entreprise chargés de définir l'offre commerciale : quelles liaisons sont
 exploitées, à quels horaires, à quel tarif et avec quelle capacité.
@@ -159,7 +159,7 @@ Trois différents niveaux d’habilitation sont distingués dans l’accès aux 
 
 \subsection*{Outils de développement}
 
-L’application sera développée en Python. La gestion et le stockage des données seront assurés par PostgreSQL. Enfin, afin de faciliter la coordination et le travail collaboratif entre les membres de l’équipe, nous utiliserons Github pour centraliser le code et suivre les différentes modifications apportées au projet.
+L’application sera développée en Python. La gestion et le stockage des données seront assurés par PostgreSQL. Enfin, afin de faciliter la coordination et le travail collaboratif entre les membres de l’équipe, nous utiliserons GitHub pour centraliser le code et suivre les différentes modifications apportées au projet.
 
 
 \section{Étapes de réalisation}
@@ -174,7 +174,7 @@ Afin d'organiser les différentes phases du projet, nous avons établi
 un planning prévisionnel permettant de répartir les principales étapes
 d'analyse, de conception et de développement sur la durée du projet.
 
-La première partie du projet est dédiée à l'analyse de notre sujet et la 
+La première partie du projet est dédiée à l'analyse de notre sujet et à la 
 réalisation de diagrammes afin d'orienter le développement de notre application.
 La deuxième se concentre sur le développement de l'application et l'écriture du 
 rapport final. Puis la dernière partie sera dédiée à la préparation pour la
@@ -209,7 +209,7 @@ soutenance.
 
 Ce diagramme de cas d'utilisation délimite la zone fonctionnelle du backend et structure les interactions selon le profil de l'utilisateur et avec l'API externe de la \textit{SNCF}.
 
-Les utilisateurs de l'application ont trois rôles, d'où le mécanisme d'héritage mis en place. Un \textbf{Utilisateur} créé son compte, puis il se connecte avec son rôle, parmi les \textbf{Admins}, les \textbf{Collaborateurs} et les \textbf{Clients}, et cela lui donne accès à ses possibilités dédiées.
+Les utilisateurs de l'application ont trois rôles, d'où le mécanisme d'héritage mis en place. Un \textbf{Utilisateur} crée son compte, puis il se connecte avec son rôle, parmi les \textbf{Admins}, les \textbf{Collaborateurs} et les \textbf{Clients}, et cela lui donne accès à ses possibilités dédiées.
 
 \begin{itemize}
     \item Le \textbf{Client} dispose des fonctionnalités de recherche, de consultation des tarifs et de réservation. 
@@ -307,15 +307,15 @@ Nous sommes dans la situation où l'utilisateur cherche à faire un trajet entre
 
 La requête est d'abord envoyée vers le \textbf{Business Layer} afin de répondre à la demande par une sélection parmi les meilleurs trajets.
 
-Le \textbf{Business Layer} commence par demander les informations de gares stockées en \textbf{backend}.
+Le \textbf{Business Layer} commence par demander les informations sur les gares stockées en \textbf{backend}.
 
-Une fois ces dernières reçues, une demande est faite à l'\textbf{API SNCF} afin d'obtenir les différents trajets et leur durée entre les gares de départ et d'arrivée.
+Une fois ces dernières reçues, une demande est faite à l'\textbf{API SNCF} afin d'obtenir les différents trajets et leurs durées entre les gares de départ et d'arrivée.
 
 Parallèlement, une demande sur ces mêmes trajets fournis par notre entreprise est faite en \textbf{backend}.
 
-Il y a enfin comparaison entre les trajets fournis par l'\textbf{API SNCF} et ceux que fournit par notre entreprise afin de finaliser la liste de trajets optimaux.
+Il y a enfin comparaison entre les trajets fournis par l'\textbf{API SNCF} et ceux que fournit notre entreprise afin de finaliser la liste de trajets optimaux.
 
-La réduction liée à l'abonnement qu'a souscrit l'utilisateur est enfin appliquée au prix des différents trajets et les résultats optimaux sont envoyés à l'utilisateur
+La réduction liée à l'abonnement auquel l'utilisateur a souscrit est enfin appliquée au prix des différents trajets et les résultats optimaux sont envoyés à l'utilisateur
 
 
 \chapter{Endpoints de l'API}
