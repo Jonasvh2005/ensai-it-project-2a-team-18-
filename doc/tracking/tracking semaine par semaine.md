@@ -63,13 +63,7 @@ Date : Jeudi 10 Septembre
 - Elaboration des fonctions creer_tables(), lister_lignes(), supprimer_ligne(numero)
 
 
-
-
-
 ---
-
-## Backlog
-# Point Hebdomadaire - Projet
 
 ## Semaine n°3
 Date : Jeudi 17 Septembre
