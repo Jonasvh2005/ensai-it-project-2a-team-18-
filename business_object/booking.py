@@ -12,7 +12,7 @@ class Booking:
         self.date_reservation = date_reservation
         self.statut = statut
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Méthode spéciale pour afficher une réservation
         Return
         -------

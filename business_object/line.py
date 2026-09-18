@@ -10,7 +10,7 @@ class Line:
         self.id = id
         self.nom = nom
 
-    def __str__(self):
+    def __str__(self) -> str:
         """Méthode spéciale pour afficher une ligne
         Return
         -------
