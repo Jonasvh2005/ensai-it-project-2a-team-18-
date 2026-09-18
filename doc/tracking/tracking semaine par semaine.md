@@ -76,6 +76,9 @@ Date : Jeudi 17 Septembre
 - Commentaires diagramme cas d'utilisation
 
 ### VAN HECKE Jonas
+- Création d'un algo pour le choix des trajets optimaux
+- Rédaction des objectifs optionnels dans le rapport d'analyse
+- Commentaire diagramme séquence du rapport d'analyse
 
 ### SIDOBRE Noé
 - Mise en page du rapport d'analyse
