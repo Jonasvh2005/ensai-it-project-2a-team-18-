@@ -94,7 +94,27 @@ Date : Jeudi 17 Septembre
 - Mise en page du rapport d'analyse
 - Elaboration d'une troisième partie : Endpoints de l'API
 ---
+## Semaine n°4
+Date : Jeudi 24 Septembre
 
+## Tâches réalisées cette semaine
+
+### YVANO Maxime
+- RAS
+
+### VAN HECKE Jonas
+- RAS
+
+### SIDOBRE Noé
+- RAS
+
+### OUATTARA Youssouf Adam
+- RAS
+
+###  ARRAJI Salma
+- RAS
+
+---
 ## Backlog
 
 > Liste des tâches en attente de prise en charge.
