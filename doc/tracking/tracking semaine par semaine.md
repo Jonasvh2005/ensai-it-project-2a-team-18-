@@ -100,7 +100,8 @@ Date : Jeudi 24 Septembre
 ## Tâches réalisées cette semaine
 
 ### YVANO Maxime
-- RAS
+- Structure des fichiers
+- Esquisse DAO
 
 ### VAN HECKE Jonas
 - RAS
