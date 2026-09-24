@@ -104,7 +104,7 @@ Date : Jeudi 24 Septembre
 - Esquisse DAO
 
 ### VAN HECKE Jonas
-- RAS
+- Travail sur fonction choix trajets optimaux
 
 ### SIDOBRE Noé
 - RAS
