@@ -3,7 +3,7 @@
 
 Requête à écrire : 
 GET https://api.navitia.io/v1/coverage/sncf(ici le endpoint)
-Authorization: Token
+Authorization: Token : 6312e847-12aa-4179-b558-c7a2a54cdc01
 
 - /places
 Permet de rechercher des objets géographiques ou des gares par autocomplétion (paramètre q). C'est l'endpoint idéal pour transformer une saisie utilisateur (ex. "Lille") en coordonnées GPS ou en identifiant structuré.
