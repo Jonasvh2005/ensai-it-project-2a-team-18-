@@ -86,13 +86,14 @@ class StationDao:
             with DBConnection().connection as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(
-                        "UPDATE station             "
-                        "   SET nom = %(nom)s,   "
-                        ""
-                        "WHERE id = %(id)s;      ",
+                        "UPDATE station           "
+                        "   SET nom = %(nom)s,    "
+                        "       code = %(code)s,  "
+                        "WHERE id = %(id)s;       ",
                         {
-                            "id": line.id,
-                            "nom": line.nom,
+                            "id": station.id,
+                            "nom": station.nom,
+                            "code": station.code
                         },
                     )
                     nb_rows = cursor.rowcount
@@ -102,20 +103,20 @@ class StationDao:
         return nb_rows == 1
 
     @log
-    def delete(self, line) -> bool:
-        """Supprime une ligne de la base de données
+    def delete(self, station) -> bool:
+        """Supprime une station de la base de données
         Args:
-            line (Line): la réservation à supprimer
+            station (Station): la station à supprimer
         Returns:
-            True si la réservation a été supprimée, False sinon
+            True si la station a été supprimée, False sinon
         """
         try:
             with DBConnection().connection as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(
-                        "DELETE FROM line "
+                        "DELETE FROM station "
                         "WHERE id = %(id)s   ",
-                        {"id": line.id},
+                        {"id": station.id},
                     )
                     res = cursor.rowcount
         except Exception as e:
