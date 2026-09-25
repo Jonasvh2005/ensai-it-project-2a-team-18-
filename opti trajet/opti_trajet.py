@@ -58,8 +58,7 @@ def ajout_opti(liste, trip):
 
 def trajets_opt(gare_ini, gare_finale, horaire_depart):
     """ici, on suppose que la durée = l'heure de depart choisie"""
-    gares_atteintes = voisins(gare_ini)
-    # voisins est une liste obtenue par: SELECT gares FROM tableau_adjacence WHERE autre_gare = gare_ini
+    gares_atteintes = [gare_ini]
     d_trajets_opt_gares = {gare_ini: [(0, horaire_depart, -1)]}
     # le tuple correspond à (Prix, horaire_d'arrivée, nb de correspondance)
     trajets_finaux = []
