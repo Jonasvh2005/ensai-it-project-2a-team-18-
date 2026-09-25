@@ -2,20 +2,18 @@ class Trip:
     """Classe représentant un trajet en train
     Attributs:
     id: int
-    date: datetime
-    heure_dep: datetime
-    heure_arr: datetime
+    date_dep: datetime
+    date_arr: datetime
     """
 
-    def __init__(self, id, prix, date, gare_dep, gare_arr, heure_dep, heure_arr, corresp=None):
+    def __init__(self, id, prix, gare_dep, gare_arr, date_dep, date_arr, corresp=None):
         "Constructeur pour la classe Trip"
         self.id = id
         self.prix = prix
-        self.date = date
         self.gare_dep = gare_dep
         self.gare_arr = gare_arr
-        self.heure_dep = heure_dep
-        self.heure_arr = heure_arr
+        self.date_dep = date_dep
+        self.date_arr = date_arr
         self.corresp = corresp
 
     def __str__(self) -> str:
@@ -24,4 +22,4 @@ class Trip:
         -------
         str: Affichage du trajet
         """
-        return f"Le trajet de {self.gare_dep} à {self.gare_arr} coute {self.prix}, il débutera le {self.date} à {self.heure_dep} et arrivera à {self.heure_arr}."
+        return f"Le trajet de {self.gare_dep} à {self.gare_arr} coute {self.prix}, il débutera le {self.date_dep} et arrivera le {self.date_arr}."
