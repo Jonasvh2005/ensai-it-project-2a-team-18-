@@ -3,7 +3,7 @@ CREATE TABLE user (
     id      SERIAL PRIMARY KEY,
     nom     VARCHAR(30),
     mail    VARCHAR(50),
-    mdp     VARCHAR(256),
+    password     VARCHAR(256),
     role    VARCHAR(30)
 );
 
