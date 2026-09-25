@@ -7,7 +7,7 @@ class Trip:
     heure_arr: datetime
     """
 
-    def __init__(self, id, prix, date, gare_dep, gare_arr, heure_dep, heure_arr, corresp):
+    def __init__(self, id, prix, date, gare_dep, gare_arr, heure_dep, heure_arr):
         "Constructeur pour la classe Trip"
         self.id = id
         self.prix = prix
@@ -16,7 +16,6 @@ class Trip:
         self.gare_arr = gare_arr
         self.heure_dep = heure_dep
         self.heure_arr = heure_arr
-        self.corresp = corresp
 
     def __str__(self) -> str:
         """Méthode spéciale pour afficher le trajet

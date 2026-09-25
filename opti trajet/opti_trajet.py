@@ -45,36 +45,55 @@ def strictement_pire(liste, prix, horaire_arr, corresp):
             ans = True
     return ans
 
+
 def ajout_opti(liste, trip):
     ans = [trip]
     for trajet in liste:
-        if (trip.prix > trajet.prix or trip.horaire_arr > trajet.horaire_arr or trip.corresp > trajetcorresp):
+        if (trip.prix > trajet.prix or trip.horaire_arr > trajet.horaire_arr or trip.corresp > trajet.corresp):
             ans.append(trajet)
     return ans
+
+# ## indique une ligne que je n'ai pas codé mais qu'il faudra coder
 
 
 def trajets_opt(gare_ini, gare_finale, horaire_depart):
     """ici, on suppose que la durée = l'heure de depart choisie"""
     gares_atteintes = voisins(gare_ini)
     # voisins est une liste obtenue par: SELECT gares FROM tableau_adjacence WHERE autre_gare = gare_ini
-    d_trajets_opt_gares = {gare_ini: [(0, horaire_depart, 0)]}
+    d_trajets_opt_gares = {gare_ini: [(0, horaire_depart, -1)]}
     # le tuple correspond à (Prix, horaire_d'arrivée, nb de correspondance)
     trajets_finaux = []
     list_trips = []
-    # Dans l'API, récupérer tous les trajets partant de gare_ini entre t = 0 et t = 12h
+    # ## Dans l'API, récupérer tous les trajets partant de gare_ini entre t = 0 et t = 3h
     tri_desc_fus(list_trips)
     loop = True
     while loop:
         trip = list_trips.pop()
         gare_arr = trip.gare_arr
         horaire_arr = (trip.date, trip.heure_arr)
-        prix = trip.prix
-        corresp = trip.corresp
-        if not strictement_pire(trajets_finaux, prix, horaire_arr, corresp):
-            if not (gare_arr in d_trajets_opt_gares):
-                d_trajets_opt_gares[gare_arr] = [(prix, horaire_arr, corresp)]
-                gares_atteintes.append(gare_arr)
-                # on ajoute à liste_trip les trains partant de gare_arr pendant les 12h après horaire_arr avec les valeurs de trip adequat
-            else:
-                d_trajets_opt_gares[gare_arr] = ajout_opti(d_trajets_opt_gares[gare_arr], trip)
-
+        (prix, corresp) = ([], [])
+        for (prix_dep, (date_arr, h_arr), corr_dep) in d_trajets_opt_gares[trip.gare_dep]:
+            if h_arr < trip.heure_dep and trip.heure_dep + 3 > h_arr:
+                prix.append(prix_dep + trip.prix)
+                corresp.append(corr_dep + 1)
+        # on obtient la gare de départ, d'arrivée, l'horaire d'arrivée du train et
+        # les différents trajets optimaux en revenant au tout début du trajet et leurs prix/corresp
+        for i in range(len(prix)):
+            # boucle sur tous les trajets possiblement opti
+            if not strictement_pire(trajets_finaux, prix[i], horaire_arr, corresp[i]):
+                # on abandonne le trajet s'il en existe un strictement mieux auparavant
+                if not (gare_arr in d_trajets_opt_gares):
+                    # cas où la gare d'arrivée est une nouvelle gare
+                    d_trajets_opt_gares[gare_arr] = [(prix[i], horaire_arr, corresp[i])]
+                    gares_atteintes.append(gare_arr)
+                    # ## on ajoute à liste_trip les trains partant de gare_arr pendant les 3h après horaire_arr avec les valeurs de trip adequat
+                else:
+                    d_trajets_opt_gares[gare_arr] = ajout_opti(d_trajets_opt_gares[gare_arr], trip)
+                    # ## on ajoute à liste_trip les trains partant de gare_arr pendant les 3h après horaire_arr avec les valeurs de trip adequat
+        if len(list_trips) == 0:
+            loop = False
+            tri_desc_fus(list_trips)
+    # la boucle s'arrète bien car tous les 3 heures, le trajet actuel ajoute au moins un voyage en train
+    # et le prix actuel, nb de correspondance et horaire d'arrivée augmentent tous strictement.
+    # ainsi, au bout d'un moment, strictement_pire() devient True et len(list_trips) décroit
+    return trajets_finaux
