@@ -1,15 +1,11 @@
-from backend.src.business_object.trip import Trip
-
-
-def inverse(liste):
-    ans = []
-    for i in len(liste):
-        ans.append(liste.pop)
-    return (liste)
-
-
 def tri_desc_fus(list_trip):
-    # trajet(gare_dep, gare_arr, date_dep, date_arr, prix, type)
+    """
+    Fonction permettant de trier une liste de Trips en fonction de l'horaire de départ.
+
+    Parameters:
+
+    list_trip: list[Trip]
+    """
     n = len(list_trip)
     if len(n <= 1):
         return list_trip
@@ -22,8 +18,8 @@ def tri_desc_fus(list_trip):
         while (liste_1 != [] and liste_2 != []):
             n1 = len(liste_1)
             n2 = len(liste_2)
-            dep_1 = (liste_1[n1-1].dep, liste_1[n1-1].heure_dep)
-            dep_2 = (liste_2[n2-1].dep, liste_2[n2-1].heure_dep)
+            dep_1 = (liste_1[n1-1].date, liste_1[n1-1].heure_dep)
+            dep_2 = (liste_2[n2-1].date, liste_2[n2-1].heure_dep)
             if dep_1 > dep_2:
                 liste_finale.append(liste_2.pop())
             else:
@@ -34,11 +30,21 @@ def tri_desc_fus(list_trip):
         else:
             for _ in len(liste_1):
                 liste_finale.append(liste_1.pop())
-        liste_finale = inverse(liste_finale)
+        liste_finale = liste_finale[::-1]
+        # on inverse la liste
         return liste_finale
 
 
-def strictement_pire(liste, prix, horaire_arr, corresp):
+def strictement_pire(liste, prix, date_arr, corresp):
+    """
+    Fonction permettant de verifier si un trajet est strictement pire qu'une liste de trajets.
+
+    Parameters:
+    prix: int: le prix total du trajet
+    heure_arr: timestamp: la date d'arrivée
+    corresp: int: le nb de correspondance
+    liste: list[Trip, corresp]
+    """
     ans = False
     for trip in liste:
         if (trip.prix <= prix and trip.horaire_arr <= horaire_arr and trip.corresp <= corresp):
