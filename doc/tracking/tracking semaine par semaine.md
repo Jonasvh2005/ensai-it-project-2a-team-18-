@@ -151,10 +151,10 @@ Date : Jeudi 01 Octobre
 
 ### Prioritaires
 
-- Commencer à écrire le README (comment faire le .env, ...) (s'inspirer de celui du prof sur son template)
-- - Pour le .env, rajouter une ligne comme ça : SNCF_API_TOKEN=<ton_token> pour que chacun mette son token et qu'il ne soit pas public
-- Faire une base de données pour commencer à tester des fichiers DAO etc (avoir des valeurs dans chaque table)
-- Faire le client HTTP qui communique avec l'API SNCF et le mettre dans le dossier client du dossier backend/src
-- Faire les fichiers DAO pour communiquer avec la base de données
+- Commencer à écrire le README (comment faire le .env, ...) (s'inspirer de celui du prof sur son template) #Noé
+- - Pour le .env, rajouter une ligne comme ça : SNCF_API_TOKEN=<ton_token> pour que chacun mette son token et qu'il ne soit pas public #Noé
+- Faire une base de données pour commencer à tester des fichiers DAO etc (avoir des valeurs dans chaque table) #Salma
+- Faire le client HTTP qui communique avec l'API SNCF et le mettre dans le dossier client du dossier backend/src #Maxime
+- Faire les fichiers DAO pour communiquer avec la base de données #Adam
 
 ### Secondaires
