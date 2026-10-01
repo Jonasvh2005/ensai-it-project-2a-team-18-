@@ -131,6 +131,8 @@ Date : Jeudi 01 Octobre
 
 ### YVANO Maxime
 - Fichier SQL pour initialiser la base de données
+- Client SNCF fait pour communiquer avec l'API
+- StationDao fait pour avoir un exemple de DAO (avec la modif de l'objet Station)
 
 ### VAN HECKE Jonas
 - presque fini fonction opti trajet (il manque le DAO)
