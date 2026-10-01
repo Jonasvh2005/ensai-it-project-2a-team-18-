@@ -139,7 +139,7 @@ Date : Jeudi 01 Octobre
 - modifié fichier rapport en fonction des demandes du prof
 
 ### SIDOBRE Noé
-- RAS
+- Réalisation de la première version complète du fichier README
 
 ### OUATTARA Youssouf Adam
 - RAS
