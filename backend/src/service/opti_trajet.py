@@ -38,22 +38,22 @@ def tri_desc_fus(list_trip):
         return liste_finale
 
 
-def strictement_pire(liste, trajet):
+def strictement_pire(list_trip, trajet):
     """
-    Fonction permettant de verifier si un trajet est strictement pire qu'une liste de trajets.
+    Fonction permettant de verifier si un trajet qui arrive à une gare x est strictement pire qu'une liste de trajets arrivant à cette même gare x.
 
     Parameters:
     trajet: Trip: le trajet à vérifier
     liste: list[Trip]
     """
     ans = False
-    for trip in liste:
+    for trip in list_trip:
         if (trip.prix <= trajet.prix and trip.date_arr <= trajet.date_arr and trip.corresp <= trajet.corresp):
             ans = True
     return ans
 
 
-def ajout_opti(liste, trajet):
+def ajout_opti(list_trip, trajet):
     """
     Fonction ajoutant un Trip à une liste de Trip et ne gardant que les éléments optimaux.
     liste est déjà composée de trajets optimaux
@@ -62,10 +62,10 @@ def ajout_opti(liste, trajet):
     trajet: Trip: le trajet à ajouter dans la liste s'il est optimal
     liste: list[Trip]
     """
-    if strictement_pire(liste, trajet):
-        return liste
+    if strictement_pire(list_trip, trajet):
+        return list_trip
     ans = [trajet]
-    for trip in liste:
+    for trip in list_trip:
         if (trip.prix < trajet.prix or trip.date_arr < trajet.date_arr or trip.corresp < trajet.corresp):
             ans.append(trip)
     return ans

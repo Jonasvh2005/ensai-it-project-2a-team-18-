@@ -21,12 +21,15 @@ class StationDao:
             with DBConnection.connection() as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(
-                        "INSERT INTO station(nom, code) VALUES"
-                        "(%(nom)s, %(code)s"
+                        "INSERT INTO station(sncf_id, nom, ville, latitude, longitude) VALUES"
+                        "(%(sncf_id)s, %(nom)s, %(ville)s, %(latitude)s, %(longitude)%"
                         "RETURNING id;",
                         {
+                            "sncf_id": station.sncf_id,
                             "nom": station.nom,
-                            "code": station.code,
+                            "ville": station.ville,
+                            "latitude": station.latitude,
+                            "longitude": station.longitude,
                         },
                     )
                     res = cursor.fetchone()
@@ -68,7 +71,10 @@ class StationDao:
             line = Station(
                 id=res["id"],
                 nom=res["nom"],
-                code=res["code"],
+                sncf_id=res["sncf_id"],
+                ville=res["ville"],
+                latitude=res["latitude"],
+                longitude=res["longitude"]
             )
         return line
 
@@ -87,13 +93,19 @@ class StationDao:
                 with connection.cursor() as cursor:
                     cursor.execute(
                         "UPDATE station           "
-                        "   SET nom = %(nom)s,    "
-                        "       code = %(code)s,  "
+                        "   SET sncf_id = %(sncf_id)s,    "
+                        "       nom = %(nom)s,  "
+                        "       ville = %(ville)s,"
+                        "       latitude = %(latitude)s,"
+                        "       longitude = %(longitude)s"
                         "WHERE id = %(id)s;       ",
                         {
                             "id": station.id,
+                            "sncf_id": station.sncf_id,
                             "nom": station.nom,
-                            "code": station.code
+                            "ville": station.ville,
+                            "latitude": station.latitude,
+                            "longitude": station.longitude
                         },
                     )
                     nb_rows = cursor.rowcount
@@ -123,3 +135,17 @@ class StationDao:
             logger.error(e)
             raise
         return res > 0
+
+
+# Note pour Adam
+# Tu peux prendre comme exemple ce fichier pour chaque DAO, dans la structure et le début de chaque méthode/fonction, 
+# tout sera similairement la même chose
+# Que ce fichier DAO est correct, les autres sont des anciens qui ne prennent pas en compte la base de données 
+# (ou ne sont juste pas faits)
+# Pour chaque DAO, il faut d'abord que tu changes les business_object correspondant pour qu'ils soient adaptés avec 
+# la base de données. Pour voir ce qu'il y a dans chaque objet, tu vas voir ce qu'il y a dans la table correspondante
+# dans le fichier data/init_db.sql. Il faut surtout changer les noms pour qu'ils soient adaptés et rajouter ou retirer 
+# des paramètres dans le constructeur de chaque classe.abs
+# Ensuite, tu peux adapter le DAO en t'inspirant de celui-ci en remplçant les bons paramètres et les bons objets qui
+# correspondent à ta classe que tu t'occupes
+# Pas besoin de tout faire tout de suite, en faire au moins 2 seraient top pour qu'on puisse déjà commencer des pseudo-tests
