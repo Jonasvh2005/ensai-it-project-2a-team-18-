@@ -159,3 +159,5 @@ Date : Jeudi 01 Octobre
 - Faire les fichiers DAO pour communiquer avec la base de données
 
 ### Secondaires
+
+- faire les tests de la fonction opti_trajet.py -> Jonas
