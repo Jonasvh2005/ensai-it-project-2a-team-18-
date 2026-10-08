@@ -1,20 +1,25 @@
 class Trip:
-    """Classe représentant un trajet en train
+    """Classe représentant un trajet en train (table `trip`)
     Attributs:
-    id: int
-    date_dep: datetime
-    date_arr: datetime
+    id: int (id_trip)
+    dep_station_id: int: id de la gare de départ
+    arr_station_id: int: id de la gare d'arrivée
+    dep_datetime: datetime
+    arr_datetime: datetime
+    statut: str
+    creator_id: int: id de l'utilisateur qui a créé le trajet
     """
 
-    def __init__(self, id, prix, gare_dep, gare_arr, date_dep, date_arr, corresp=None):
+    def __init__(self, dep_station_id, arr_station_id, dep_datetime, arr_datetime,
+                 statut=None, creator_id=None, id=None):
         "Constructeur pour la classe Trip"
         self.id = id
-        self.prix = prix
-        self.gare_dep = gare_dep
-        self.gare_arr = gare_arr
-        self.date_dep = date_dep
-        self.date_arr = date_arr
-        self.corresp = corresp
+        self.dep_station_id = dep_station_id
+        self.arr_station_id = arr_station_id
+        self.dep_datetime = dep_datetime
+        self.arr_datetime = arr_datetime
+        self.statut = statut
+        self.creator_id = creator_id
 
     def __str__(self) -> str:
         """Méthode spéciale pour afficher le trajet
@@ -22,4 +27,5 @@ class Trip:
         -------
         str: Affichage du trajet
         """
-        return f"Le trajet de {self.gare_dep} à {self.gare_arr} coute {self.prix}, il débutera le {self.date_dep} et arrivera le {self.date_arr}."
+        return (f"Le trajet de la gare {self.dep_station_id} à la gare {self.arr_station_id} "
+                f"débute le {self.dep_datetime} et arrive le {self.arr_datetime}.")
