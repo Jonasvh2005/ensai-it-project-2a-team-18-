@@ -113,7 +113,7 @@ Date : Jeudi 24 Septembre
 - RAS
 
 ###  ARRAJI Salma
-- Modification du diagramme des cas d'utilisation
+- RAS
 
 ---
 ## Backlog
@@ -145,8 +145,28 @@ Date : Jeudi 01 Octobre
 - RAS
 
 ###  ARRAJI Salma
-- RAS
+- Modification du diagramme des cas d'utilisation
 
+## Semaine n°6
+Date : Jeudi 08 Octobre
+
+## Tâches réalisées cette semaine
+
+### YVANO Maxime
+
+
+### VAN HECKE Jonas
+
+
+### SIDOBRE Noé
+
+
+### OUATTARA Youssouf Adam
+
+
+###  ARRAJI Salma
+-  Données d'exemple pour toutes les tables
+- Données de test pour les DAO
 ---
 ## Backlog
 
