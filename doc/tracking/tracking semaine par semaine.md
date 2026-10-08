@@ -153,31 +153,30 @@ Date : Jeudi 08 Octobre
 ## Tâches réalisées cette semaine
 
 ### YVANO Maxime
-
+- Modif de StationDao pour ajouter des fonctionnalités
+- StationService fait en partie pour communiquer avec l'API et le DAO
 
 ### VAN HECKE Jonas
-
+- RAS
 
 ### SIDOBRE Noé
-
+- RAS
 
 ### OUATTARA Youssouf Adam
-
+- RAS
 
 ###  ARRAJI Salma
--  Données d'exemple pour toutes les tables
+- Données d'exemple pour toutes les tables
 - Données de test pour les DAO
+
 ---
 ## Backlog
 
 > Liste des tâches en attente de prise en charge.
 
 ### Prioritaires
-- Commencer à écrire le README (comment faire le .env, ...) (s'inspirer de celui du prof sur son template) #Noé
-- Pour le .env, rajouter une ligne comme ça : SNCF_API_TOKEN=<ton_token> pour que chacun mette son token et qu'il ne soit pas public #Noé
-- Faire une base de données pour commencer à tester des fichiers DAO etc (avoir des valeurs dans chaque table) #Salma
-- Faire le client HTTP qui communique avec l'API SNCF et le mettre dans le dossier client du dossier backend/src #Maxime
-- Faire les fichiers DAO pour communiquer avec la base de données #Adam
+- Faire les fichiers DAO pour communiquer avec la base de données
+- Faire les fichiers Service (une fois que le fichier DAO associé est fait je pense)
 
 ### Secondaires
-- faire les tests de la fonction opti_trajet.py #Jonas
+- Commencer à écrire les tests pour les fichiers existants
