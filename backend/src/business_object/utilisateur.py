@@ -1,27 +1,20 @@
 class Utilisateur:
     """
-    classe représentant les comptes utilisateurs
+    Classe représentant les comptes utilisateurs (table `users`)
     Attributs:
-        id: int: identifiant du compte
+        id: int: identifiant du compte (id_user)
         nom: str: nom du compte
-        mdp: str: mot de passe du compte
-        email: str: email associé au compte
+        mail: str: email associé au compte
+        password: str: mot de passe HACHÉ (jamais en clair)
         role: CLIENT, COLLABORATEUR ou ADMIN: niveau d'accès du compte
-        abbonement: str: abonnement pris (ou None si pas d'abonnement)
     """
 
-    def __init__(self, id, nom, mdp, email):
-        self.__id = None
-        # self.__id = max_id + 1
+    def __init__(self, nom, mail, password, role="CLIENT", id=None):
+        self.id = id
         self.nom = nom
-        self.mdp = mdp
-        self.email = email
-        self.role = "CLIENT"
-        self.abonnement = None
-
-    def id(self):
-        """Fonction permettant de renvoyer l'identifiant de l'utilisateur"""
-        return self.__id
+        self.mail = mail
+        self.password = password
+        self.role = role
 
     def __str__(self):
-        return f"Le compte {self.__id} nommé {self.__nom} lié au mail {self.email} a comme rôle {self.__role}"
+        return f"Le compte {self.id} nommé {self.nom} lié au mail {self.mail} a comme rôle {self.role}"
