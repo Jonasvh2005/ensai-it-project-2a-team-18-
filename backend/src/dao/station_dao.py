@@ -22,7 +22,7 @@ class StationDao:
                 with connection.cursor() as cursor:
                     cursor.execute(
                         "INSERT INTO station(sncf_id, nom, ville, latitude, longitude) VALUES"
-                        "(%(sncf_id)s, %(nom)s, %(ville)s, %(latitude)s, %(longitude)%"
+                        "(%(sncf_id)s, %(nom)s, %(ville)s, %(latitude)s, %(longitude)s)"
                         "RETURNING id;",
                         {
                             "sncf_id": station.sncf_id,
@@ -92,13 +92,13 @@ class StationDao:
             with DBConnection().connection as connection:
                 with connection.cursor() as cursor:
                     cursor.execute(
-                        "UPDATE station           "
+                        "UPDATE station                   "
                         "   SET sncf_id = %(sncf_id)s,    "
-                        "       nom = %(nom)s,  "
-                        "       ville = %(ville)s,"
-                        "       latitude = %(latitude)s,"
-                        "       longitude = %(longitude)s"
-                        "WHERE id = %(id)s;       ",
+                        "       nom = %(nom)s,            "
+                        "       ville = %(ville)s,        "
+                        "       latitude = %(latitude)s,  "
+                        "       longitude = %(longitude)s "
+                        "WHERE id = %(id)s;               ",
                         {
                             "id": station.id,
                             "sncf_id": station.sncf_id,
@@ -135,6 +135,55 @@ class StationDao:
             logger.error(e)
             raise
         return res > 0
+
+    @log
+    def find_all(self) -> list[Station]:
+        """Récupère toutes les gares de la base de données"""
+        try:
+            with DBConnection().connection as connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        "SELECT *              "
+                        "FROM station          "
+                        "ORDER BY nom;         ",
+                        {},
+                    )
+                    res = cursor.fetchall()
+        except Exception as e:
+            logger.error(e)
+            raise
+        stations = []
+        if res:
+            for row in res:
+                stations.append(Station(id=row["id"], sncf_id=row["sncf_id"],
+                                        nom=row["nom"], ville=row["ville"],
+                                        latitude=row["latitude"], longitude=row["longitude"]))
+        return stations
+
+    @log
+    def find_by_name(self, nom: str) -> list[Station]:
+        """Trouve les gares dont le nom contient la saisie (insensible à la casse)"""
+        try:
+            with DBConnection().connection as connection:
+                with connection.cursor() as cursor:
+                    cursor.execute(
+                        "SELECT *                        "
+                        "FROM station                    "
+                        "WHERE nom ILIKE %(nom)s         "
+                        "ORDER BY nom;                   ",
+                        {"nom": f"%{nom}%"}, # %nom% permet de trouver toutes les chaines de caractères qui contiennent nom (Ex: avec "rennes", on pourra avoir "Gare de Rennes", sans les pourcentages, on ne l'aurait pas eu
+                    )
+                    res = cursor.fetchall()
+        except Exception as e:
+            logger.error(e)
+            raise
+        stations = []
+        if res:
+            for row in res:
+                stations.append(Station(id=row["id"], sncf_id=row["sncf_id"],
+                                        nom=row["nom"], ville=row["ville"],
+                                        latitude=row["latitude"], longitude=row["longitude"]))
+        return stations
 
 
 # Note pour Adam
