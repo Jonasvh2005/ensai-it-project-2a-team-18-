@@ -163,7 +163,8 @@ Date : Jeudi 08 Octobre
 - RAS
 
 ### OUATTARA Youssouf Adam
-- RAS
+- Modification des fichiers trip et utilisateurs dans le business object
+- Ajout des fichiers trip_dao et utilisateurs_dao dans le dossier DAO
 
 ###  ARRAJI Salma
 - Données d'exemple pour toutes les tables
